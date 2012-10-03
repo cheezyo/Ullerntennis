@@ -1,0 +1,41 @@
+class MenubuttonsController < ApplicationController
+  def index
+    @menubuttons = Menubutton.all
+  end
+
+  def show
+    @menubutton = Menubutton.find(params[:id])
+  end
+
+  def new
+    @menubutton = Menubutton.new
+  end
+
+  def create
+    @menubutton = Menubutton.new(params[:menubutton])
+    if @menubutton.save
+      redirect_to @menubutton, :notice => "Successfully created menubutton."
+    else
+      render :action => 'new'
+    end
+  end
+
+  def edit
+    @menubutton = Menubutton.find(params[:id])
+  end
+
+  def update
+    @menubutton = Menubutton.find(params[:id])
+    if @menubutton.update_attributes(params[:menubutton])
+      redirect_to @menubutton, :notice  => "Successfully updated menubutton."
+    else
+      render :action => 'edit'
+    end
+  end
+
+  def destroy
+    @menubutton = Menubutton.find(params[:id])
+    @menubutton.destroy
+    redirect_to menubuttons_url, :notice => "Successfully destroyed menubutton."
+  end
+end

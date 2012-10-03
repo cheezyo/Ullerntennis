@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UllernTennis</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+
+		<div id="headerWrapper">
+
+			<div id="wrapper">
+
+				<header>
+					<h1> My Page </h1>
+				</header>
+
+				<nav>
+				<ul id="sddm">
+					<li>
+						<%= link_to 'Hjem', articles_path %>
+					</li>
+				</ul>
+					<% n = 1 %>
+					<% Menubutton.find(:all).each do |m|%>
+
+					<ul id="sddm">
+
+						<li>
+							<a href="#"
+							onmouseover="mopen('m<%= n %>')"
+							onmouseout="mclosetime()"><%= m.title%></a>
+							<% if m.submenubuttons != 0 %>
+							<div id="m<%= n %>" onmouseover="mcancelclosetime()"
+							onmouseout="mclosetime()">
+								<% m.submenubuttons.each do |s| %>
+								<%= link_to s.title, s %>
+								<% end %>
+							</div>
+							<% end%>
+						</li>
+					</ul>
+					<% n+= 1 %>
+					<% end %>
+					<div style="clear:both"></div>
+
+				</nav>
+				<article>
+				
+					<div id="admin">
+						<%= yield %>
+					</div>
+
+				
+				</article>
+
+				
+			</div>
+		</div>
+		<footer>
+					<p>
+						This is footer
+					</p>
+				</footer>
+
+	</body>
+</html>

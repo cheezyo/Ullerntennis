@@ -1,0 +1,28 @@
+#admin{
+	width:960px;
+	height:auto;
+	float:left;
+}
+
+#admin img{
+	width:100px;
+	height:100px;
+}
+
+#admin td{
+	
+	text-align: center;	
+}
+
+#admin tr td{
+	width:200px;
+}
+
+.left{
+	float:left;
+	margin:0px 5px 15px 0px;
+}
+
+table{
+	float:left;	
+}

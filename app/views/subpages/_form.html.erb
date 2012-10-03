@@ -1,0 +1,16 @@
+<%= form_for @subpage do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <% Submenubutton.find(:all).each do |s|%>
+  	<%= f.radio_button :submenubutton_id, s.id %>
+  	<%= label_tag s.title%>
+  <% end%>
+  
+  <p><%= f.submit %></p>
+<% end %>

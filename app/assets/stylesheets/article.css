@@ -1,0 +1,19 @@
+#article_header {
+	float:left;
+}
+
+#article_header img{
+	width:530px;
+	height:350px;
+}
+
+#article_header small{
+	font-style:italic;
+}
+
+#article_content img{
+	float:left;
+	width:215px;
+	height:150px;
+	padding:5px 5px 5px 0px;
+}

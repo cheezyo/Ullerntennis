@@ -1,0 +1,51 @@
+<div id="news">
+<% n = 0 %>
+<% for a in @articles %>
+
+<% if a == @articles.first %>
+<section>
+	<div id="head_news">
+		<a href="articles/<%= a.id%>"><h1><%= a.title %></h1></a>
+		<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a>
+		<small><%= a.author + " " + a.created_at.strftime("%d %b. %Y") %></small>
+			<p>
+				<%= a.ingress.truncate(128) %>
+			</p>
+			<%= link_to "Les mer...", a%>
+	</div>
+</section>
+
+
+
+
+<% elsif n < 4 %>
+<section>
+			<div id="image">
+			<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a>
+			<%= link_to "Les mer...", a%>
+			</div>
+			<div id="ingress">
+			<a href="articles/<%= a.id%>"><h3><%= a.title %></h3></a>
+			<small><%= a.author + " " + a.created_at.strftime("%d %b. %Y") %></small>
+				<p>
+			<%= a.ingress.truncate(128) %>
+			 </p>
+			 </div>
+
+</section>
+<% else %>
+
+	<div id="old_news">
+	<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/>
+	<h5><%= a.title %></h5></a>
+	</div>
+
+<% end %>
+<% n += 1%>
+<% end %>
+
+<%= will_paginate @articles %>
+<p>
+	<%= link_to "New Article", new_article_path %>
+</p>
+</div>

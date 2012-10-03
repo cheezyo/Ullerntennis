@@ -1,0 +1,27 @@
+<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/news.png" alt="pic" class="left" />
+<h1>Nyhetes administrasjon</h1>
+
+
+<table>
+	<tr>
+		<th>Tittle</th>
+		<th>Dato</th>
+		<th>Skrevet av</th>
+		<th>Rediger</th>
+		<th>Slett</th>
+		<th></th>
+	</tr>
+	
+	<% Article.find(:all).each do |a| %>
+	
+	<tr>
+		<td><%= a.title%></td>
+		<td><%= a.created_at.strftime("%d %b. %Y") %></td>
+		<td><%= a.author %></td>
+		<td><a href="<%= edit_article_path (a) %>">Rediger</a></td>
+		<td><%= link_to "Slett", a, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td></td>
+	</tr>
+	<% end %>
+
+</table>

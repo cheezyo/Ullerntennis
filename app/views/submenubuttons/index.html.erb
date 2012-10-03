@@ -1,0 +1,19 @@
+<%  "Submenubuttons" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+  </tr>
+  <% for submenubutton in @submenubuttons %>
+    <tr>
+      <td><%= submenubutton.title %></td>
+      <td><%= submenubutton.content %></td>
+      <td><%= link_to "Show", submenubutton %></td>
+      <td><%= link_to "Edit", edit_submenubutton_path(submenubutton) %></td>
+      <td><%= link_to "Destroy", submenubutton, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Submenubutton", new_submenubutton_path %></p>

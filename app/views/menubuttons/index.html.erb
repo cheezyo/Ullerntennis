@@ -1,0 +1,17 @@
+<%  "Menubuttons" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+  <% for menubutton in @menubuttons %>
+    <tr>
+      <td><%= menubutton.title %></td>
+      <td><%= link_to "Show", menubutton %></td>
+      <td><%= link_to "Edit", edit_menubutton_path(menubutton) %></td>
+      <td><%= link_to "Destroy", menubutton, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Menubutton", new_menubutton_path %></p>

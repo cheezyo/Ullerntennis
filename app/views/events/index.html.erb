@@ -1,0 +1,21 @@
+<% "Events" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Dateofevent</th>
+    <th>Content</th>
+  </tr>
+  <% for event in @events %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.dateofevent %></td>
+      <td><%= event.content %></td>
+      <td><%= link_to "Show", event %></td>
+      <td><%= link_to "Edit", edit_event_path(event) %></td>
+      <td><%= link_to "Destroy", event, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Event", new_event_path %></p>

@@ -1,0 +1,13 @@
+one:
+  title: MyString
+  author: MyString
+  ingress: MyText
+  picture: MyString
+  content: MyString
+
+two:
+  title: MyString
+  author: MyString
+  ingress: MyText
+  picture: MyString
+  content: MyString

@@ -1,0 +1,19 @@
+<%= form_for @submenubutton do |f| %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p>
+  	<%= f.label "Menu attribute"%><br />
+  	<% Menubutton.find(:all).each do |m| %>
+  	<%= f.radio_button :menubutton_id, m.id %>
+  	<%= label_tag m.title %>
+  	<% end %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

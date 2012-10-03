@@ -1,0 +1,22 @@
+<%  "Submenubutton" %>
+
+
+  <h1><%= @submenubutton.title %></h1>
+
+
+
+  <p><%= @submenubutton.content %></p>
+
+
+<h1>Subpages</h1>
+
+<% if @submenubutton.subpages != 0 %>
+	<% @submenubutton.subpages.each do |s| %>
+		<%= s.title %><br/>
+	<% end %>
+<% end %>
+<p>
+  <%= link_to "Edit", edit_submenubutton_path(@submenubutton) %> |
+  <%= link_to "Destroy", @submenubutton, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", submenubuttons_path %>
+</p>

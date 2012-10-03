@@ -1,0 +1,18 @@
+<% "Menubutton" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @menubutton.title %>
+</p>
+<h1>Submenubuttons</h1>
+<% if @menubutton.submenubuttons != 0%>
+<% @menubutton.submenubuttons.each do |s|%>
+	<%= s.title %><br/>
+	<% end %>
+
+<% end %>
+<p>
+  <%= link_to "Edit", edit_menubutton_path(@menubutton) %> |
+  <%= link_to "Destroy", @menubutton, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", menubuttons_path %>
+</p>

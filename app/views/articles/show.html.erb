@@ -1,0 +1,12 @@
+<div id="article_header">
+	<img src="<%= @article.picture %>" alt="bilde"/>
+	<h1><%= @article.title %></h1>
+	<p><small><%= @article.created_at.strftime("%d %b. %Y")%></small></p>
+	</div>
+	<div id="article_content">
+	<p><%= @article.content %></p>
+	
+	</div>
+	
+
+

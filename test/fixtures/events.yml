@@ -1,0 +1,9 @@
+one:
+  title: MyString
+  dateofevent: 2012-10-02
+  content: MyText
+
+two:
+  title: MyString
+  dateofevent: 2012-10-02
+  content: MyText
