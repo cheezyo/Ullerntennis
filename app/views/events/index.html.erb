@@ -1,21 +1,47 @@
 <% "Events" %>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Dateofevent</th>
-    <th>Content</th>
-  </tr>
-  <% for event in @events %>
-    <tr>
-      <td><%= event.title %></td>
-      <td><%= event.dateofevent %></td>
-      <td><%= event.content %></td>
-      <td><%= link_to "Show", event %></td>
-      <td><%= link_to "Edit", edit_event_path(event) %></td>
-      <td><%= link_to "Destroy", event, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
-
+	<h2>Aktiviteter</h2>
+					<%  @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.next_month.end_of_month]) %>
+					
+					<h5><%= humanDate Date.today.month %></h5>
+					<% @events.each do |e|%>
+					<% if e.dateofevent.month == Date.today.month %>
+	
+					<%= e.dateofevent.day %>-<%= e.endofevent.day %>.<%= e.endofevent.year%>
+					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
+					<% end %>
+					<% end %>
+					
+					<h5><%= humanDate Date.today.next_month.month %></h5>
+					<% @events.each do |e|%>
+					<%  if e.dateofevent.month == Date.today.next_month.month %>
+					
+					<%= e.dateofevent.day %>-<%= e.endofevent.day %>.<%= e.endofevent.year%>
+					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
+					<% end %>
+					<% end %>
+					<h5><%= humanDate Date.today.next_month.next_month.month %></h5>
+					<% @events.each do |e|%>
+					<%  if e.dateofevent.month == Date.today.next_month.next_month.month %>
+					
+					<%= e.dateofevent.day %>-<%= e.endofevent.day %>.<%= e.endofevent.year%>
+					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
+					<% end %>
+					<% end %>
+					<h5><%= humanDate Date.today.next_month.next_month.next_month.month %></h5>
+					<% @events.each do |e|%>
+					<%  if e.dateofevent.month == Date.today.next_month.next_month.next_month.month %>
+					
+					<%= e.dateofevent.day %>-<%= e.endofevent.day %>.<%= e.endofevent.year%>
+					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
+					<% end %>
+					<% end %>
+					<h5><%= humanDate Date.today.next_month.next_month.next_month.next_month.month %></h5>
+					<% @events.each do |e|%>
+					<%  if e.dateofevent.month == Date.today.next_month.next_month.next_month.next_month.month %>
+					
+					<%= e.dateofevent.day %>-<%= e.endofevent.day %>.<%= e.endofevent.year%>
+					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
+					<% end %>
+					<% end %>
 <p><%= link_to "New Event", new_event_path %></p>

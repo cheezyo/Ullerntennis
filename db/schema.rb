@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002221059) do
+ActiveRecord::Schema.define(:version => 20121028205735) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -21,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20121002221059) do
     t.text     "content",    :limit => 255
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.integer  "album_id"
   end
 
   create_table "events", :force => true do |t|
@@ -36,11 +43,29 @@ ActiveRecord::Schema.define(:version => 20121002221059) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "inorder"
   end
 
   create_table "pages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "album_id"
+  end
+
+  create_table "players", :force => true do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.date     "birth"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "gender"
   end
 
   create_table "submenubuttons", :force => true do |t|
@@ -57,6 +82,17 @@ ActiveRecord::Schema.define(:version => 20121002221059) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "submenubutton_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "email"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.boolean  "admin"
+    t.boolean  "editor"
+    t.string   "password_digest"
   end
 
 end

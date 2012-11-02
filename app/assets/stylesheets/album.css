@@ -1,0 +1,30 @@
+#gallerywrapper{
+	margin-top:20px;
+	margin-bottom:50px;
+	float:left;
+}
+#main_image{
+	max-width:520px;
+	max-height:350px;
+	
+}
+
+#thumbwrapper{
+	width:520px;
+}
+.thumb img{
+	width:104px;
+	height:80px;
+	float:left;
+}
+
+#index_gallery{
+	float:left;
+	width: 220px;
+	padding: 5px;
+}
+
+#index_gallery img{
+	max-width:210px;
+	
+}

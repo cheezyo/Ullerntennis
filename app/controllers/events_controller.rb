@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :authorize,  only: [:update,:create, :new, :edit, :destroy]
   def index
     @events = Event.all
   end
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
-      redirect_to @event, :notice  => "Successfully updated event."
+      redirect_to '/eventsadmin', :notice  => "Successfully updated event."
     else
       render :action => 'edit'
     end

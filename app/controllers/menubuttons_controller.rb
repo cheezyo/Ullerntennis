@@ -1,10 +1,13 @@
 class MenubuttonsController < ApplicationController
+  before_filter :authorize,  only: [:update,:create, :new, :edit, :destroy, :show, :index]
   def index
     @menubuttons = Menubutton.all
   end
 
   def show
-    @menubutton = Menubutton.find(params[:id])
+        @menubutton = Menubutton.find(params[:id])
+        render :layout => 'admin'
+
   end
 
   def new

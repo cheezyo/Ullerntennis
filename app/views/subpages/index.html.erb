@@ -3,12 +3,12 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Content</th>
+
   </tr>
   <% for subpage in @subpages %>
     <tr>
       <td><%= subpage.title %></td>
-      <td><%= subpage.content %></td>
+  
       <td><%= link_to "Show", subpage %></td>
       <td><%= link_to "Edit", edit_subpage_path(subpage) %></td>
       <td><%= link_to "Destroy", subpage, :confirm => 'Are you sure?', :method => :delete %></td>

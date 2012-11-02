@@ -1,20 +1,16 @@
-<%  "Event" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
-<p>
-  <strong>Dateofevent:</strong>
-  <%= @event.dateofevent %>
-</p>
-<p>
-  <strong>Content:</strong>
+
+
+<h1>  <%= @event.title %></h1>
+
+
+<p>  <%= @event.dateofevent.day %>-<%= @event.endofevent.day %>.<%= @event.endofevent.month %>.<%= @event.endofevent.year%></p>
+
+<br/>
+
   <%= @event.content %>
-</p>
+
 
 <p>
-  <%= link_to "Edit", edit_event_path(@event) %> |
-  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", events_path %>
+  <%= link_to "Se alle", events_path %>
 </p>

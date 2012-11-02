@@ -1,0 +1,37 @@
+<div id="admin">
+<p><%= link_to "<< Tilbake", '/admin'%></p><br/>
+<div id="panel">
+<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/PhotoAlbum.png" alt="pic" class="left" />
+<h1>Aktivitets administrasjon</h1>
+</div>
+<div id="plusswrapper">
+<a href="/albums/new"><img class="pluss" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/green_plus_add.png" alt="pluss"/>
+</a>
+<h3><%= link_to 'Lag ny album', new_album_path %></h3>
+</div>
+<table class="pages" style="border-collapse: collapse;">
+<tr>
+	<th style="float:left;">Navn</th>
+	<th>Antallbilder</th>
+	<th></th>
+	<th></th>
+	<th></th>
+	
+</tr>
+	
+	<% Album.find(:all).each do |a| %>
+
+	
+	<tr>
+		<td><a style="float:left;" href="<%= edit_album_path (a) %>"><%= a.title %></a></td>
+		<td><%= a.pictures.size %></td>
+
+		<td><%= link_to 'Vis', a%></td>
+		<td><a href="<%= edit_album_path (a) %>">Rediger</a></td>
+		<td><%= link_to "Slett", a, :confirm => 'Are you sure?', :method => :delete %></td>	
+	</tr>
+	<% end %>
+
+
+</table>
+</div>

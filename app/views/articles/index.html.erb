@@ -1,13 +1,16 @@
 <div id="news">
+	
 <% n = 0 %>
 <% for a in @articles %>
 
 <% if a == @articles.first %>
+
 <section>
 	<div id="head_news">
 		<a href="articles/<%= a.id%>"><h1><%= a.title %></h1></a>
-		<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a>
-		<small><%= a.author + " " + a.created_at.strftime("%d %b. %Y") %></small>
+		<% if ! a.picture.empty? %><a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a><% end %>
+		
+		<small><%= a.author+ " " + a.created_at.strftime("%d %b. %Y") %></small>
 			<p>
 				<%= a.ingress.truncate(128) %>
 			</p>
@@ -43,9 +46,10 @@
 <% end %>
 <% n += 1%>
 <% end %>
+<div id="pagination_wrapper">
+<div class="flickr_pagination">
+<%= will_paginate @articles, previous_label: "Forrige", next_label: "Neste" %>
+</div>
+</div>
 
-<%= will_paginate @articles %>
-<p>
-	<%= link_to "New Article", new_article_path %>
-</p>
 </div>

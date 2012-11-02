@@ -1,0 +1,9 @@
+<fieldset style="border:none;">
+  <%= f.label :title, "Bilde url" %><br />
+  <%= f.text_field :title %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Slett bilde", '#', class: "remove_fields", :id => "delete" %><br/>
+  <%= f.label "Beskrivelse" %><br/>
+  <%= f.text_field :description %>
+  <%= f.hidden_field :_destroy %>
+  </fieldset>

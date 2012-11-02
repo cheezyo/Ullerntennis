@@ -1,0 +1,16 @@
+
+<h1>Gallery</h1>
+
+
+
+	<% @albums.each do |a| %>
+	<div id="index_gallery">
+			<a href="/albums/<%=a.id %>">
+			<h3><%= a.title%></h3>
+			<img src="<%= a.pictures.first.title %>" id="gallery">
+			</a>
+	</div>
+	<% end %>
+
+	
+

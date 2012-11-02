@@ -1,12 +1,33 @@
 <div id="article_header">
-	<img src="<%= @article.picture %>" alt="bilde"/>
-	<h1><%= @article.title %></h1>
-	<p><small><%= @article.created_at.strftime("%d %b. %Y")%></small></p>
-	</div>
-	<div id="article_content">
-	<p><%= @article.content %></p>
-	
-	</div>
-	
+	<% if ! @article.picture.empty? %><img src="<%= @article.picture %>" alt="bilde"/><% end  %> <h1><%= @article.title %></h1>
+	<p>
+		<small><%= @article.created_at.strftime("%d %b. %Y")%></small>
+	</p>
+</div>
+<div id="article_content">
+	<%= simple_format @article.content %>
+</div>
 
+<% if @article.album_id != 0 %>
+
+<div id="gallerywrapper">
+
+	<div id="gallery">
+		<img src="<%= Album.find(@article.album_id).pictures.first.title %>" name="Main" id="main_image">
+	</div>
+
+	<div id="thumbwrapper">
+		<% n = 1 %>
+		<% Album.find(@article.album_id).pictures.each do |p|%>
+
+		<div class="thumb" id="p<%= n %>">
+			<a href="" onclick="changePic('p<%= n %>');return false;"><img src="<%= p.title %>" name="p<%= n %>" ></a>
+		</div>
+		<% n+=1%>
+		<% end %>
+	</div>
+
+</div>
+
+<% end %>
 

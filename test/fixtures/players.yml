@@ -1,0 +1,9 @@
+one:
+  fname: MyString
+  lname: MyString
+  birth: 2012-10-05
+
+two:
+  fname: MyString
+  lname: MyString
+  birth: 2012-10-05

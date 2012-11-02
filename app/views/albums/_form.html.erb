@@ -1,0 +1,17 @@
+<%= form_for @album do |f| %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  
+    <%= f.fields_for :pictures do |builder| %>
+  
+  		<%= render 'picture_fields', f: builder %>
+  	<% end %>
+  
+	<%= link_to_add_fields "Legg til bilde", f, :pictures %>
+  
+    <p><%= f.submit %></p>
+<% end %>

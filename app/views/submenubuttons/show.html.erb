@@ -1,22 +1,26 @@
-<%  "Submenubutton" %>
 
-
-  <h1><%= @submenubutton.title %></h1>
-
-
-
-  <p><%= @submenubutton.content %></p>
-
-
-<h1>Subpages</h1>
-
-<% if @submenubutton.subpages != 0 %>
+<% if @submenubutton.subpages.size != 0 %>
+<div id="sublinks">
+	<%= link_to @submenubutton.title, @submenubutton, :class => 'at'%>
+</div>
 	<% @submenubutton.subpages.each do |s| %>
-		<%= s.title %><br/>
+	<div id="sublinks">
+		<%= link_to s.title, s, :class => 'other'%>
+			</div>
 	<% end %>
+
 <% end %>
-<p>
-  <%= link_to "Edit", edit_submenubutton_path(@submenubutton) %> |
-  <%= link_to "Destroy", @submenubutton, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", submenubuttons_path %>
-</p>
+
+<% if @submenubutton.title == "Team Ullern"%>
+<div id="sublinks">
+	<%= link_to "Spillere", players_path, :class => 'other' %>
+</div>
+<% end %>
+<div id="content">
+<h1><%= @submenubutton.title %></h1>
+ <%= raw  @submenubutton.content %>
+</div>
+
+
+
+

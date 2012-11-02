@@ -1,16 +1,34 @@
-<% "Subpage" %>
+<% sub = Submenubutton.find(@subpage.submenubutton_id)%>
+<% if sub.subpages.size != 0 %>
+<div id="sublinks">
+	<%= link_to sub.title, sub, :class => 'other' %>
+</div>
+	<% sub.subpages.each do |s| %>
+	<div id="sublinks">
+		<% if s == @subpage %>
+		<%= link_to s.title, s, :class => 'at' %>
+		<% else %>
+		<%= link_to s.title, s, :class => 'other'%>
+		<% end %>
+			</div>
+	<% end %>
+	<% if sub.title == "Team Ullern"%>
+		<div id="sublinks">
+			<%= link_to 'Spillere', players_path, :class => 'other'%>
+		</div>
+	<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @subpage.title %>
-</p>
-<p>
-  <strong>Content:</strong>
-  <%= @subpage.content %>
-</p>
+<% end %>
 
-<p>
-  <%= link_to "Edit", edit_subpage_path(@subpage) %> |
-  <%= link_to "Destroy", @subpage, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", subpages_path %>
-</p>
+
+
+<div id="content">
+
+<h1>
+	<%=  @subpage.title %>
+</h1>
+
+
+	<%= raw @subpage.content %>
+
+</div>

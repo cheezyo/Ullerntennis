@@ -1,0 +1,30 @@
+<div id="admin">
+	<p><%= link_to "<< Tilbake", '/admin'%></p><br/>
+	<div id="panel">
+<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/Anonymous_Text_Page_Icon.png" alt="pic" class="left" />
+<h1>Hovedmeny administrasjon</h1>
+</div>
+
+<table class="pages" style="border-collapse: collapse;">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>Order:</td>
+	</tr>
+	<% num = 1 %>
+	<% Menubutton.find(:all, :order => 'inorder ASC').each do |a| %>
+	
+	<tr>
+		<td style="text-align: left;"><%= link_to a.title, a%></td>
+		
+		<td><a href="<%= edit_menubutton_path (a) %>">Rediger</a></td>
+		<td><%= link_to "Slett", a, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= a.inorder %></td>
+		
+	</tr>
+	
+	<% end %>
+
+</table>
+</div>

@@ -1,5 +1,6 @@
 #article_header {
 	float:left;
+	width:530px;
 }
 
 #article_header img{
@@ -13,7 +14,12 @@
 
 #article_content img{
 	float:left;
-	width:215px;
-	height:150px;
-	padding:5px 5px 5px 0px;
+	width:285px;
+	height:220px;
+	padding:5px 10px 0px 0px;
+}
+
+#edit_field{
+	width:700px;
+	margin:0 0 0 20px;
 }

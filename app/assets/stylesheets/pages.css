@@ -1,0 +1,32 @@
+#sublinks{
+	float:left;
+}
+
+#sublinks a {
+	width:auto;
+
+	color:#fff;
+	padding:5px;
+	display:block;
+	text-decoration:none;	
+}
+
+#content{
+	float:left;
+	margin:15px 0 0 0;
+}
+
+.at {
+	background:#5377ca;
+}
+
+.at:hover{
+	background:#5377ca;
+}
+.other{
+	background:#123076;
+}
+
+.other:hover{
+	background:#5377ca;
+}

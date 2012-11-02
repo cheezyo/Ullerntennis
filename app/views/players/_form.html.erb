@@ -1,0 +1,24 @@
+<%= form_for @player do |f| %>
+
+  <p>
+    <%= f.label :fname %><br />
+    <%= f.text_field :fname %>
+  </p>
+  <p>
+    <%= f.label :lname %><br />
+    <%= f.text_field :lname %>
+  </p>
+    <p>
+  	<%= f.radio_button :gender, 'Male'%>
+  	<%= f.label "Gutt" %>
+  	<%= f.radio_button :gender, 'Female'%>
+  	<%= f.label "Jente"%>
+  </p>
+  <p>
+    <%= f.label :birth %><br />
+    <%= f.date_select :birth, :start_year => Time.now.year - 18, :end_year => Time.now.year - 5%>
+  </p>
+  
+
+  <p><%= f.submit %></p>
+<% end %>

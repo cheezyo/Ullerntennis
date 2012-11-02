@@ -1,0 +1,23 @@
+<h1> <%= @album.title %></h1>
+
+
+<div id="gallerywrapper">
+
+<div id="gallery">
+	<img src="<%= @album.pictures.first.title %>" name="Main" id="main_image">
+</div>
+
+
+<div id="thumbwrapper">
+	<% n = 1 %>
+	<% @album.pictures.each do |p|%>
+
+			<div class="thumb" id="p<%= n %>">
+			<a href="" onclick="changePic('p<%= n %>');return false;"><img src="<%= p.title %>" name="p<%= n %>" ></a>
+			</div>
+			<% n+=1%>
+<% end %>
+</div>		
+		
+</div>
+

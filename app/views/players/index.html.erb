@@ -1,0 +1,106 @@
+<% sub = Submenubutton.find_by_title("Team Ullern") %>
+
+<% if sub.subpages.size != 0 %>
+<div id="sublinks">
+	<%= link_to sub.title, sub, :class => 'other'%>
+</div>
+	<% sub.subpages.each do |s| %>
+	<div id="sublinks">
+		<%= link_to s.title, s, :class => 'other'%>
+			</div>
+	<% end %>
+
+<% end %>
+
+<div id="sublinks">
+	<%= link_to "Spillere", players_path, :class => 'at' %>
+</div>
+
+
+<div id="player">
+	<br/>
+	<h1>Team Ullern spillerne</h1>
+	<table>
+		<tr>
+			<th><h3>U 12 Gutter</h3></th>
+			<th><h3>U 12 Jenter</h3></th>
+		</tr>
+		<tr>
+			<td> <% getGroup(@players, 12, "Male").each do |p| %>
+				<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+
+			<td> <% getGroup(@players, 12, "Female").each do |p| %>
+					<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<% end %></td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<th><h3>U 14 Gutter</h3></th>
+			<th><h3>U 14 Jenter</h3></th>
+
+		</tr>
+
+		<tr>
+
+			<td> <% getGroup(@players, 14, "Male").each do |p| %>
+					<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+			<td><% getGroup(@players, 14, "Female").each do |p| %>
+					<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+
+		</tr>
+
+	</table>
+
+	<table>
+		<tr>
+			<th><h3>U 16 Gutter</h3></th>
+			<th><h3>U 16 Jenter</h3></th>
+
+		</tr>
+
+		<tr>
+
+			<td> <% getGroup(@players, 16, "Male").each do |p| %>
+			<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+			<td><% getGroup(@players, 16, "Female").each do |p| %>
+					<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+
+		</tr>
+
+	</table>
+
+	<table>
+		<tr>
+			<th><h3>U 18 Gutter</h3></th>
+			<th><h3>U 18 Jenter</h3></th>
+
+		</tr>
+
+		<tr>
+
+			<td> <% getGroup(@players, 18, "Male").each do |p| %>
+					<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+			<td><% getGroup(@players, 18, "Female").each do |p| %>
+					<%= p.fname %> <%= p.lname %> <%= Time.now.year - p.birth.year%>
+			<br/>
+			<% end %></td>
+
+		</tr>
+
+	</table>
+</div>
+	

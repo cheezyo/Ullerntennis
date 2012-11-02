@@ -5,7 +5,8 @@
   </p>
   <p>
     <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.text_area :content,:class => "tinymce", :rows => 20, :cols => 65 %>
+    <%= tinymce %>
   </p>
   <% Submenubutton.find(:all).each do |s|%>
   	<%= f.radio_button :submenubutton_id, s.id %>

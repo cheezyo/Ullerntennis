@@ -1,0 +1,32 @@
+<div id="admin">
+	<p><%= link_to "<< Tilbake", '/admin'%></p><br/>
+	<div id="panel">
+<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/users.png" alt="pic" class="left" />
+
+<h1>Brukere</h1>
+</div>
+<div id="plusswrapper">
+<a href="/articles/new"><img class="pluss" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/green_plus_add.png" alt="pluss"/>
+</a>
+<h3><%= link_to 'Legg til ny bruker', new_user_path %></h3>
+</div>
+<table class="pages" style="border-collapse: collapse;">
+  <tr>
+    <th>Navn</th>
+    <th>Email</th>
+
+    <th></th>
+    <th></th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%= user.fname + " " + user.lname %></td>
+      <td><%= user.email %></td>
+      <td><%= link_to "Rediger", edit_user_path(user) %></td>
+      <td><%= link_to "Slett", user, :confirm => 'Sikker at du vil slette?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+

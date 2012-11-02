@@ -2,36 +2,54 @@
 
 body {
 	font-family: "Times New Roman", Georgia, Serif;
-	background-color: #E9F2EF;
+	background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bg-body.gif');
+	
 }
 h1, h2, h3, h4, h5 {
-	color: #EA2E49;
+	/*color: #EA2E49;*/
+	color:#123076;
+}
+img {
+	border: none;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+a:visited{
+	color:#0645AD ;
 }
 #headerWrapper {
 	width: 100%;
 	height: 180px;
-	background-color: #5A668C;
+
 }
 
 #wrapper {
 	width: 960px;
-	margin: 0 auto;
+	margin: 40px auto;
 	position: relative;
 	color: #000;
+
+	
 }
 
 header {
 	float: left;
 	width: 960px;
-	height: 140px;
+	height: 180px;
+	background-color: #5377ca;
+	border-radius:10px 10px 0 0;
 }
 
 nav {
 	float: left;
 	width: 960px;
 	height: 40px;
-	background-color: #5A668C;
-	color: #fff;
+	background-color: #5377ca;
+	/*background-color: #3B4741;*/
 	border-bottom: 0px;
 }
 
@@ -39,8 +57,9 @@ article {
 	float: left;
 	width: 960px;
 	height: auto;
-	padding: 10px 0 14px 0;
+	padding: 10px 0 0 0;
 	background: #fff;
+
 }
 #news a {
 	text-decoration: none;
@@ -54,6 +73,7 @@ section {
 	padding: 2px 2px 15px 2px;
 	float: left;
 	border-bottom: 1px solid #a3a3a3;
+	margin-bottom: 10px;
 }
 section img {
 	width: 215px;
@@ -69,6 +89,11 @@ section img {
 	width: 320px;
 	float: left;
 	padding-left: 5px;
+}
+#pagination_wrapper {
+	width:550px;
+	margin:10px 0 20px 0;
+	float:left;
 }
 #old_news {
 	margin-top: 15px;
@@ -86,7 +111,6 @@ section img {
 }
 section small {
 	font-style: italic;
-
 }
 
 #left {
@@ -115,12 +139,12 @@ section small {
 }
 #center h1 {
 	font-size: 32px;
-	margin-top:0px;
-	margin-bottom:0;
+	margin-top: 0px;
+	margin-bottom: 0;
 }
-#center h3{
+#center h3 {
 
-	margin-bottom:0;
+	margin-bottom: 0;
 }
 #right {
 	float: left;
@@ -134,8 +158,8 @@ section small {
 	border: 1px solid #a3a3a3;
 	border-top: none;
 }
-#inner_right h5{
-	margin:10px 0 10px 0;
+#inner_right h5 {
+	margin: 10px 0 10px 0;
 }
 
 #inner_right img {
@@ -145,16 +169,29 @@ section small {
 
 footer {
 	float: left;
-	width: 100%;
+	width: 960px;
+	margin:0 auto;
+	margin-bottom:20px;
 	height: 200px;
 	text-align: center;
 	color: #fff;
-	background-color: #5A668C;
+	border-radius:0 0 10px 10px;
+	background-color: #5377ca;
 }
+#player{
+	float:left;
+}
+#player table th {
+	text-align: left;
+}
+#player table th, td {
 
+	width:300px;
+}
 /* Typografi */
 
 p {
 	font-size: 16px;
-	line-height: 1.5em;
+	line-height: 1.4em;
+	margin:0px;
 }

@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  
+  before_filter :authorize,  only: [:update,:create, :new, :edit, :destroy]
   def index
     @articles = Article.order("created_at DESC").page(params[:page]).per_page(7)
   end
@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    render :layout => 'admin'
   end
 
   def create
@@ -23,6 +24,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    render :layout => 'admin'
   end
 
   def update

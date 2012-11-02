@@ -1,27 +1,35 @@
+<div id="admin">
+	<p><%= link_to "<< Tilbake", '/admin'%></p><br/>
+<div id="panel">
 <img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/news.png" alt="pic" class="left" />
+
 <h1>Nyhetes administrasjon</h1>
-
-
-<table>
+</div>
+<div id="plusswrapper">
+<a href="/articles/new"><img class="pluss" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/green_plus_add.png" alt="pluss"/>
+</a>
+<h3><%= link_to 'Legg til ny artikel', new_article_path %></h3>
+</div>
+<table class="pages" style="border-collapse: collapse">
 	<tr>
-		<th>Tittle</th>
+		<th style="text-align: left">Tittle</th>
 		<th>Dato</th>
 		<th>Skrevet av</th>
 		<th>Rediger</th>
 		<th>Slett</th>
-		<th></th>
 	</tr>
 	
-	<% Article.find(:all).each do |a| %>
+	<% Article.find(:all,:order => "created_at DESC").each do |a| %>
 	
 	<tr>
-		<td><%= a.title%></td>
+		<td style="text-align: left"><%= link_to a.title, a%></td>
 		<td><%= a.created_at.strftime("%d %b. %Y") %></td>
 		<td><%= a.author %></td>
 		<td><a href="<%= edit_article_path (a) %>">Rediger</a></td>
 		<td><%= link_to "Slett", a, :confirm => 'Are you sure?', :method => :delete %></td>
-		<td></td>
+
 	</tr>
 	<% end %>
 
 </table>
+</div>

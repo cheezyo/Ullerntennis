@@ -1,4 +1,5 @@
 class SubpagesController < ApplicationController
+  before_filter :authorize,  only: [:update,:create, :new, :edit, :destroy, :index]
   def index
     @subpages = Subpage.all
   end

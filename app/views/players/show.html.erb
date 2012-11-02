@@ -1,0 +1,20 @@
+
+
+<p>
+  <strong>Fname:</strong>
+  <%= @player.fname %>
+</p>
+<p>
+  <strong>Lname:</strong>
+  <%= @player.lname %>
+</p>
+<p>
+  <strong>Birth:</strong>
+  <%= @player.birth %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_player_path(@player) %> |
+  <%= link_to "Destroy", @player, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", players_path %>
+</p>

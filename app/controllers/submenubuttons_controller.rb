@@ -1,4 +1,5 @@
 class SubmenubuttonsController < ApplicationController
+  before_filter :authorize,  only: [:edit, :update, :create, :new, :destroy]
   def index
     @submenubuttons = Submenubutton.all
   end
@@ -8,26 +9,30 @@ class SubmenubuttonsController < ApplicationController
   end
 
   def new
+
     @submenubutton = Submenubutton.new
   end
 
   def create
+    
     @submenubutton = Submenubutton.new(params[:submenubutton])
     if @submenubutton.save
-      redirect_to @submenubutton, :notice => "Successfully created submenubutton."
+      redirect_to "/admin"
     else
       render :action => 'new'
     end
   end
 
   def edit
+    
     @submenubutton = Submenubutton.find(params[:id])
   end
 
   def update
     @submenubutton = Submenubutton.find(params[:id])
     if @submenubutton.update_attributes(params[:submenubutton])
-      redirect_to @submenubutton, :notice  => "Successfully updated submenubutton."
+      @menubutton = Menubutton.find(@submenubutton.menubutton_id)
+      redirect_to @menubutton, :notice  => "Successfully updated submenubutton."
     else
       render :action => 'edit'
     end

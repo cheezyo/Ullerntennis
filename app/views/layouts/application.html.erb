@@ -5,38 +5,56 @@
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
+		<%= tinymce_assets %>
 	</head>
-	<body>
+	<body onload="change('img')">
+		<!--[if IE]><style>
+		body{
+		background-color:#787878;
+		}
+		</style><![endif]-->
 
+		
 		<div id="headerWrapper">
 
 			<div id="wrapper">
 
 				<header>
-					<h1> My Page </h1>
+					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
+					<div  onmouseover="change('img')" style="margin:15px 0 0 65px;width:600px;height:140px; float:left;background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bane.png');">
+						<img name="img" style="float:right;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/incourt.png" alt="logo"/>
+
+					</div>
+					<img style="float:right;margin:15px 15px 0 0;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
 				</header>
 
 				<nav>
-				<ul id="sddm">
-					<li>
-						<%= link_to 'Hjem', articles_path %>
-					</li>
-				</ul>
+					<ul id="sddm">
+						<li>
+							<%= link_to 'Hjem', articles_path %>
+						</li>
+					</ul>
 					<% n = 1 %>
-					<% Menubutton.find(:all).each do |m|%>
-
+					<% Menubutton.find(:all,:order => 'inorder ASC').each do |m|%>
+					<% title = m.title %>
 					<ul id="sddm">
 
 						<li>
 							<a href="#"
 							onmouseover="mopen('m<%= n %>')"
 							onmouseout="mclosetime()"><%= m.title%></a>
+
 							<% if m.submenubuttons != 0 %>
 							<div id="m<%= n %>" onmouseover="mcancelclosetime()"
 							onmouseout="mclosetime()">
+								<% if title == "Arrangementer " %>
+								<%= link_to 'Aktivitets kalender', events_path %>
+								<% end %>
 								<% m.submenubuttons.each do |s| %>
+
 								<%= link_to s.title, s %>
 								<% end %>
+
 							</div>
 							<% end%>
 						</li>
@@ -47,43 +65,46 @@
 
 				</nav>
 				<article>
-					
+
 					<div id="center">
 						<%= yield %>
 					</div>
 
 					<div id="right">
-						<div id="inner_right" style="border-top: 1px solid #a3a3a3;">
+							<div id="inner_right" style="border-top: 1px solid #a3a3a3;">
+							<h2>Aktiviteter</h2>
+							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
+
+							<h5><%= humanDate Date.today.month %></h5>
+							<% @events.each do |e|%>
+							<% if e.dateofevent.month == Date.today.month %>
+
+							<%= e.dateofevent.day %>-<%= e.endofevent.day %>
+							<a href="/events/<%= e.id %>"><%= e.title %></a>
+							<br/>
+							<% end %>
+							<% end %>
+
+							<h5><%= humanDate Date.today.next_month.month %></h5>
+							<% @events.each do |e|%>
+							<%  if e.dateofevent.month == Date.today.next_month.month %>
+
+							<%= e.dateofevent.day %>-<%= e.endofevent.day %>
+							<a href="/events/<%= e.id %>"><%= e.title %></a>
+							<br/>
+							<% end %>
+							<% end %>
+
+						</div>
+						<div id="inner_right" >
 							<h2>Banebooking</h2>
-						<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/tenniscourt.jpg" alt="bilde">
-						</div>	
+							<a href="http://www.senserio.com/default.aspx?ID=119" target="_blank"><img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/calendar_icon1.png" alt="bilde"></a>
+						</div>
+					
 						<div id="inner_right">
-						<h2>Aktiviteter</h2>
-					<%  @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
-					
-					<h5><%= humanDate Date.today.month %></h5>
-					<% @events.each do |e|%>
-					<% if e.dateofevent.month == Date.today.month %>
-	
-					<%= e.dateofevent.day %> - <%= e.endofevent.day %>
-					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
-					<% end %>
-					<% end %>
-					
-					<h5><%= humanDate Date.today.next_month.month %></h5>
-					<% @events.each do |e|%>
-					<%  if e.dateofevent.month == Date.today.next_month.month %>
-					
-					<%= e.dateofevent.day %> - <%= e.endofevent.day %>
-					<a href="/events/<%= e.id %>"><%= e.title %></a><br/>
-					<% end %>
-					<% end %>
-					
-					</div>
-					<div id="inner_right">
-						<h2>Turneringer</h2>
-						<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/banner_tornamentsoftware.png" alt="bilde">
-					</div>	
+							<h2>Turneringer</h2>
+							<a href="http://ntf.tournamentsoftware.com/" target="_blank"><img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/banner_tornamentsoftware.png" alt="bilde"></a>
+						</div>
 					</div>
 					<div id="left">
 						<h2>Sponsorer</h2>
@@ -93,14 +114,14 @@
 					</div>
 				</article>
 
-				
-			</div>
-		</div>
-		<footer>
+				<footer>
 					<p>
 						This is footer
 					</p>
 				</footer>
+
+			</div>
+		</div>
 
 	</body>
 </html>

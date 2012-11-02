@@ -5,6 +5,7 @@
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
+		  <%= tinymce_assets %>
 	</head>
 	<body>
 
@@ -21,9 +22,14 @@
 					<li>
 						<%= link_to 'Hjem', articles_path %>
 					</li>
+					
+					<li>
+						<%= link_to 'Admin', '/admin' %>
+					</li>
+					
 				</ul>
 					<% n = 1 %>
-					<% Menubutton.find(:all).each do |m|%>
+					<% Menubutton.find(:all, :order => 'inorder ASC').each do |m|%>
 
 					<ul id="sddm">
 
@@ -44,7 +50,7 @@
 					<% n+= 1 %>
 					<% end %>
 					<div style="clear:both"></div>
-
+				
 				</nav>
 				<article>
 				
@@ -54,15 +60,15 @@
 
 				
 				</article>
-
-				
-			</div>
-		</div>
-		<footer>
+<footer>
 					<p>
 						This is footer
 					</p>
 				</footer>
+				
+			</div>
+		</div>
+		
 
 	</body>
 </html>

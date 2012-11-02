@@ -1,0 +1,34 @@
+<div id="admin">
+	<p><%= link_to "<< Tilbake", '/admin'%></p><br/>
+	<div id="panel">
+<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/Anonymous_Text_Page_Icon.png" alt="pic" class="left" />
+<h1>Aktivitets administrasjon</h1>
+</div>
+
+<table class="pages" style="border-collapse: collapse;">
+<tr>
+	<th style="float:left;">Navn</th>
+	<th>Startdato</th>
+	<th>Sluttdato</th>
+	<th></th>
+	<th></th>
+	<th></th>
+	
+</tr>
+	
+	<% Event.find(:all, :order => "endofevent ASC").each do |a| %>
+	<% if a.dateofevent > Date.today%>
+	
+	<tr>
+		<td><a style="float:left;" href="<%= edit_event_path (a) %>"><%= a.title %></a></td>
+		<td><%= a.dateofevent %></td>
+		<td><%= a.endofevent%></td>
+		<td><%= link_to 'Vis', a%></td>
+		<td><a href="<%= edit_event_path (a) %>">Rediger</a></td>
+		<td><%= link_to "Slett", a, :confirm => 'Are you sure?', :method => :delete %></td>	
+	</tr>
+	<% end %>
+	<% end %>
+
+</table>
+</div>

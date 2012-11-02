@@ -2,11 +2,31 @@
 	width:960px;
 	height:auto;
 	float:left;
+	padding:5px 0 20px 5px;
+
 }
 
-#admin img{
+.avatar{
+
 	width:100px;
 	height:100px;
+}
+.pluss{
+	float:left;	
+	margin:20px 5px 20px 20px;
+	width:30px;
+	height:30px;
+}
+#plusswrapper{
+	float:left;
+	width:100%;
+}
+#plusswrapper h3 {
+	margin:25px 0 0 0;
+}
+#plusswrapper a{
+	color:#EA2E49;
+	text-decoration: none;
 }
 
 #admin td{
@@ -20,9 +40,39 @@
 
 .left{
 	float:left;
+	height:100px;
 	margin:0px 5px 15px 0px;
 }
 
-table{
-	float:left;	
+
+
+#panel{
+	float:left;
+	width:100%;
 }
+table.pages{
+	margin:0 auto;
+}
+
+
+
+table.pages tr:hover{
+	background: #49A3FF;
+}
+
+table.pages tr {
+	height:40px;
+	font-size: 18px;
+	background:#EAEBD8;
+}
+
+table.pages tr a {
+	color:#000;
+}
+
+table.pages td{
+	padding:10px;
+}
+
+
+
