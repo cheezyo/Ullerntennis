@@ -1,5 +1,5 @@
 <div id="news">
-	
+<% if @articles.count > 0 %>	
 <% n = 0 %>
 <% for a in @articles %>
 
@@ -53,3 +53,7 @@
 </div>
 
 </div>
+<% else %>
+
+<p>Nothing here</p>
+<% end %>
