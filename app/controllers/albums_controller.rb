@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(params[:album])
     if @album.save
-      redirect_to @album, :notice => "Successfully created album."
+      redirect_to @album, :notice => "Album opprettet"
     else
       render :action => 'new'
     end
@@ -29,7 +29,7 @@ class AlbumsController < ApplicationController
   def update
     @album = Album.find(params[:id])
     if @album.update_attributes(params[:album])
-      redirect_to @album, :notice  => "Successfully updated album."
+      redirect_to @album, :notice  => "Album oppdatert"
     else
       render :action => 'edit'
     end
@@ -38,6 +38,6 @@ class AlbumsController < ApplicationController
   def destroy
     @album = Album.find(params[:id])
     @album.destroy
-    redirect_to '/albumadmin/', :notice => "Successfully destroyed album."
+    redirect_to '/albumadmin/', :notice => "Album slettet"
   end
 end

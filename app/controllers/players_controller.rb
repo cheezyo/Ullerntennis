@@ -15,7 +15,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(params[:player])
     if @player.save
-      redirect_to @player, :notice => "Successfully created player."
+      redirect_to @player, :notice => "Spiller lagt til"
     else
       render :action => 'new'
     end
@@ -28,7 +28,7 @@ class PlayersController < ApplicationController
   def update
     @player = Player.find(params[:id])
     if @player.update_attributes(params[:player])
-      redirect_to @player, :notice  => "Successfully updated player."
+      redirect_to @player, :notice  => "Spiller oppdatert"
     else
       render :action => 'edit'
     end
@@ -37,6 +37,6 @@ class PlayersController < ApplicationController
   def destroy
     @player = Player.find(params[:id])
     @player.destroy
-    redirect_to players_url, :notice => "Successfully destroyed player."
+    redirect_to players_url, :notice => "Spiller slettet"
   end
 end

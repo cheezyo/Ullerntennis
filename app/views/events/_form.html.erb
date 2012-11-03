@@ -1,21 +1,21 @@
 <%= form_for @event do |f| %>
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label "Tittel" %><br />
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label 'Start' %><br />
+    <%= f.label 'Start dato' %><br />
     <%= f.date_select :dateofevent %>
   </p>
   <p>
-    <%= f.label 'Slutt' %><br />
+    <%= f.label 'Slutt dato' %><br />
     <%= f.date_select :endofevent %>
   </p>
   <p>
-    <%= f.label :content %><br />
+    <%= f.label "Innhold" %><br />
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 65 %>
     <%= tinymce %>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Lagre" %></p>
 <% end %>

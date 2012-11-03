@@ -1,23 +1,23 @@
 <%= form_for @user do |f| %>
 
   <p>
-    <%= f.label :fname %><br />
+    <%= f.label "Fornavn" %><br />
     <%= f.text_field :fname %>
   </p>
   <p>
-    <%= f.label :lname %><br />
+    <%= f.label "Etternavn" %><br />
     <%= f.text_field :lname %>
   </p>
   <p>
-    <%= f.label :email %><br />
+    <%= f.label "Brukernavn" %><br />
     <%= f.email_field :email %>
   </p> 
   <p>
-    <%= f.label :password %><br />
+    <%= f.label "Passord" %><br />
     <%= f.password_field :password %>
   </p>
    <p>
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "Gjenta passord" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
 
@@ -30,5 +30,5 @@
   	<%= f.label :editor %>
   </p>
 	  
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Lagre"%></p>
 <% end %>

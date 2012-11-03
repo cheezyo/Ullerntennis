@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     if @event.save
-      redirect_to @event, :notice => "Successfully created event."
+      redirect_to @event, :notice => "Ny aktivitet lagt ut"
     else
       render :action => 'new'
     end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update_attributes(params[:event])
-      redirect_to '/eventsadmin', :notice  => "Successfully updated event."
+      redirect_to '/eventsadmin', :notice  => "Aktivitet oppdatert"
     else
       render :action => 'edit'
     end
@@ -37,6 +37,6 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_url, :notice => "Successfully destroyed event."
+    redirect_to events_url, :notice => "Artikkel slettet"
   end
 end

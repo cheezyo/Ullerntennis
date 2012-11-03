@@ -14,11 +14,10 @@
 		}
 		</style><![endif]-->
 
-		
 		<div id="headerWrapper">
-
+			
 			<div id="wrapper">
-
+			<%if current_user %>	<span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
 				<header>
 					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
 					<div  onmouseover="change('img')" style="margin:15px 0 0 65px;width:600px;height:140px; float:left;background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bane.png');">
@@ -33,6 +32,13 @@
 						<li>
 							<%= link_to 'Hjem', articles_path %>
 						</li>
+					</ul>
+					<ul id="sddm">
+						<% if current_user %>
+						<li>
+						<%= link_to 'Admin', '/admin' %>
+						</li>
+						<% end %>
 					</ul>
 					<% n = 1 %>
 					<% Menubutton.find(:all,:order => 'inorder ASC').each do |m|%>
@@ -64,6 +70,11 @@
 					<div style="clear:both"></div>
 
 				</nav>
+				<% flash.each do |key, value| %>
+				<div class="flash<%= key  %>">
+					<h3><%= value %></h3>
+				</div>
+				<% end %>
 				<article>
 
 					<div id="center">
@@ -71,7 +82,7 @@
 					</div>
 
 					<div id="right">
-							<div id="inner_right" style="border-top: 1px solid #a3a3a3;">
+						<div id="inner_right" style="border-top: 1px solid #a3a3a3;">
 							<h2>Aktiviteter</h2>
 							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
 
@@ -100,7 +111,7 @@
 							<h2>Banebooking</h2>
 							<a href="http://www.senserio.com/default.aspx?ID=119" target="_blank"><img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/calendar_icon1.png" alt="bilde"></a>
 						</div>
-					
+
 						<div id="inner_right">
 							<h2>Turneringer</h2>
 							<a href="http://ntf.tournamentsoftware.com/" target="_blank"><img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/banner_tornamentsoftware.png" alt="bilde"></a>

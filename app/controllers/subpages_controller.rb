@@ -15,7 +15,7 @@ class SubpagesController < ApplicationController
   def create
     @subpage = Subpage.new(params[:subpage])
     if @subpage.save
-      redirect_to @subpage, :notice => "Successfully created subpage."
+      redirect_to @subpage, :notice => "Underside opprettet"
     else
       render :action => 'new'
     end
@@ -28,7 +28,7 @@ class SubpagesController < ApplicationController
   def update
     @subpage = Subpage.find(params[:id])
     if @subpage.update_attributes(params[:subpage])
-      redirect_to @subpage, :notice  => "Successfully updated subpage."
+      redirect_to @subpage, :notice  => "Underside oppdatert"
     else
       render :action => 'edit'
     end
@@ -37,6 +37,6 @@ class SubpagesController < ApplicationController
   def destroy
     @subpage = Subpage.find(params[:id])
     @subpage.destroy
-    redirect_to subpages_url, :notice => "Successfully destroyed subpage."
+    redirect_to subpages_url, :notice => "Underside slettet"
   end
 end

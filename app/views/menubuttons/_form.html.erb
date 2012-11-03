@@ -1,11 +1,11 @@
 <%= form_for @menubutton do |f| %>
   <p>
-    <%= f.label :title %><br />
+    <%= f.label "Tittel" %><br />
     <%= f.text_field :title %>
   </p>
   <p>
-  	<%= f.label :inorder %><br/>
+  	<%= f.label "Rekkefølge"%><br/>
   	<%= f.number_field :inorder%>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Lagre" %></p>
 <% end %>

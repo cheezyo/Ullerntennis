@@ -53,6 +53,16 @@ nav {
 	border-bottom: 0px;
 }
 
+.flashnotice{
+	float: left;
+	width: 960px;
+	height: auto;
+	background: #a1f43d;	
+}
+.flashnotice h3{
+	padding:3px;
+}
+
 article {
 	float: left;
 	width: 960px;

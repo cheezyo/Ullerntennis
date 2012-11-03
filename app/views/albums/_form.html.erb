@@ -1,7 +1,7 @@
 <%= form_for @album do |f| %>
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label "Tittel" %><br />
     <%= f.text_field :title %>
   </p>
 
@@ -13,5 +13,5 @@
   
 	<%= link_to_add_fields "Legg til bilde", f, :pictures %>
   
-    <p><%= f.submit %></p>
+    <p><%= f.submit "Lagre"%></p>
 <% end %>
