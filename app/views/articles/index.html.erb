@@ -1,8 +1,12 @@
 <div id="news">
-<% if @articles.count > 0 %>	
+	
 <% n = 0 %>
 <% for a in @articles %>
-
+<% if a.ingress.empty? %>
+<% ingress = simple_format a.content %>
+<% else %>
+<% ingress = a.ingress %>
+<% end %>
 <% if a == @articles.first %>
 
 <section>
@@ -12,7 +16,7 @@
 		
 		<small><%= a.author+ " " + a.created_at.strftime("%d %b. %Y") %></small>
 			<p>
-				<%= a.ingress.truncate(128) %>
+				<%= simple_format ingress.truncate(128) %>
 			</p>
 			<%= link_to "Les mer...", a%>
 	</div>
@@ -31,7 +35,7 @@
 			<a href="articles/<%= a.id%>"><h3><%= a.title %></h3></a>
 			<small><%= a.author + " " + a.created_at.strftime("%d %b. %Y") %></small>
 				<p>
-			<%= a.ingress.truncate(128) %>
+			<%= simple_format ingress.truncate(128) %>
 			 </p>
 			 </div>
 
@@ -53,7 +57,3 @@
 </div>
 
 </div>
-<% else %>
-
-<p>Nothing here</p>
-<% end %>
