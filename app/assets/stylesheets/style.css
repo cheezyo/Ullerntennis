@@ -69,6 +69,7 @@ article {
 	height: auto;
 	padding: 10px 0 0 0;
 	background: #fff;
+	padding-bottom:20px;
 
 }
 #news a {
@@ -182,11 +183,90 @@ footer {
 	width: 960px;
 	margin:0 auto;
 	margin-bottom:20px;
-	height: 200px;
+	padding:0 0 20px 0px;
+	height: auto;
 	text-align: center;
 	color: #fff;
 	border-radius:0 0 10px 10px;
 	background-color: #5377ca;
+}
+
+#main-footer{
+	width:500px;
+	text-align:left;
+	padding: 10px;
+	margin: 0 0px 30px 0;
+}
+
+
+#main-footer-img{
+	width: 60px;
+	height: 60px;
+	float: left;
+}
+#main-footer-img img {
+	width:59px;
+	height: 59px;
+}
+
+#main-footer-text{
+	
+	margin: 0 0 0 80px;
+}
+#main-footer-text h2 {
+	margin-bottom: 4px;
+}
+#main-footer-text p {
+	margin: 0 0 0 10px;
+}
+#main-footer-text a {
+	color:#fff;
+	text-decoration: underline;
+}
+
+#footer-search{
+	width:300px;
+	float:right;
+	height:100px;
+	margin:30px 10px 0 0;
+	text-align: left;
+}
+#footer-search h2{
+	margin: 0;
+}
+.searchbox{
+	width:200px;
+	float:left;
+	font-size: 16px;
+	padding:8px;
+
+}
+.searchbutton{
+	padding:8px;
+	float: left;
+ 
+}
+.footer-break{
+	width: 95%;
+	margin: 0 auto;
+}
+.footer-break h2 {
+	margin:0;
+}
+.footer-break hr{
+	margin-top:0px;
+}
+#footer-content{
+	width:150px;
+	float:left;
+}
+
+#footer-content h3 {
+	
+	margin:0px;
+}
+#footer-content a{
+	color:#fff;
 }
 #player{
 	float:left;

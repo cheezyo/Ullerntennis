@@ -1,0 +1,31 @@
+
+<p>
+  <strong>Contactperson:</strong>
+  <%= @contactinfo.contactperson %>
+</p>
+<p>
+  <strong>Telf:</strong>
+  <%= @contactinfo.telf %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @contactinfo.email %>
+</p>
+<p>
+  <strong>Street:</strong>
+  <%= @contactinfo.street %>
+</p>
+<p>
+  <strong>Postalcode:</strong>
+  <%= @contactinfo.postalcode %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @contactinfo.content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_contactinfo_path(@contactinfo) %> |
+  <%= link_to "Destroy", @contactinfo, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", contactinfos_path %>
+</p>

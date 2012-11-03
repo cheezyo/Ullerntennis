@@ -1,0 +1,15 @@
+one:
+  contactperson: MyString
+  telf: MyString
+  email: MyString
+  street: MyString
+  postalcode: MyString
+  content: MyText
+
+two:
+  contactperson: MyString
+  telf: MyString
+  email: MyString
+  street: MyString
+  postalcode: MyString
+  content: MyText

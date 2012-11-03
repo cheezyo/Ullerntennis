@@ -1,0 +1,27 @@
+
+
+<table>
+  <tr>
+    <th>Contactperson</th>
+    <th>Telf</th>
+    <th>Email</th>
+    <th>Street</th>
+    <th>Postalcode</th>
+    <th>Content</th>
+  </tr>
+  <% for contactinfo in @contactinfos %>
+    <tr>
+      <td><%= contactinfo.contactperson %></td>
+      <td><%= contactinfo.telf %></td>
+      <td><%= contactinfo.email %></td>
+      <td><%= contactinfo.street %></td>
+      <td><%= contactinfo.postalcode %></td>
+      <td><%= contactinfo.content %></td>
+      <td><%= link_to "Show", contactinfo %></td>
+      <td><%= link_to "Edit", edit_contactinfo_path(contactinfo) %></td>
+      <td><%= link_to "Destroy", contactinfo, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Contactinfo", new_contactinfo_path %></p>

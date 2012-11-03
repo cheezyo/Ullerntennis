@@ -126,9 +126,40 @@
 				</article>
 
 				<footer>
-					<p>
-						This is footer
-					</p>
+					<div id="footer-search">
+						<h2>Søk her:</h2>
+						<input type="text" class="searchbox" />
+						<input type="submit"  value="Søk" class="searchbutton"/>
+					</div>
+					<div id="main-footer">
+						
+						<div id="main-footer-img">
+							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png">
+						</div>
+						<div id="main-footer-text">
+						<h2>Kontaktinformasjon</h2>
+						<% if Contactinfo.find(:all).count > 0 %>
+						<% info = Contactinfo.find(1)%>
+							<p>Kontaktperson: <%= info.contactperson %></p>
+							<p>Telefon: <%= info.telf %></p>
+							<p>E-post: <a href="mailto:<%=info.email%>"><%=info.email%></a></p> 
+							<p>Adresse: <%= info.street %> <%= info.postalcode%></p>
+							<p><%= simple_format info.content%></p>
+						<% end %>
+						</div>	
+					</div>
+					
+					<div class="footer-break"><h2>Sidekart</h2><hr/></div>
+					<% Menubutton.find(:all).each do |m|%>
+					<div id="footer-content">
+					<h3><%= m.title %></h3>
+					<% m.submenubuttons.each do |s|%>
+						<p><%= link_to s.title, s %></p>
+						
+					<% end %>
+						</div>
+					<% end %>
+				
 				</footer>
 
 			</div>

@@ -1,0 +1,29 @@
+<%= form_for @contactinfo do |f| %>
+
+  <p>
+    <%= f.label "Kontaktperson" %><br />
+    <%= f.text_field :contactperson %>
+  </p>
+  <p>
+    <%= f.label "Telefon" %><br />
+    <%= f.text_field :telf %>
+  </p>
+  <p>
+    <%= f.label "Epost" %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label "Gate og nummer" %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label "Postnummer og by" %><br />
+    <%= f.text_field :postalcode %>
+  </p>
+  <p>
+    <%= f.label "Mer info" %><br />
+    <%= f.text_area :content, :class => "tinymce", :rows => 10, :cols => 40 %>
+    <%= tinymce %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
