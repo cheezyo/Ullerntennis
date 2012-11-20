@@ -1,4 +1,6 @@
 UllernTennis::Application.routes.draw do
+  resources :sideboxes
+
   resources :contactinfos
 
   get 'signup', to: 'users#new', as: 'signup'

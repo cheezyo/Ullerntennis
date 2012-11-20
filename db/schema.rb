@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103074217) do
+ActiveRecord::Schema.define(:version => 20121104002635) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(:version => 20121103074217) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "gender"
+  end
+
+  create_table "sideboxes", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "position"
+    t.integer  "placing"
   end
 
   create_table "submenubuttons", :force => true do |t|

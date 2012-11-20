@@ -133,7 +133,7 @@ section small {
 }
 #left img {
 	width: 140px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	padding-left: 5px;
 }
 #left h1, h2 {
@@ -167,7 +167,7 @@ section small {
 	width: 218px;
 	padding: 0 0 15px 5px;
 	border: 1px solid #a3a3a3;
-	border-top: none;
+	border-bottom: none;
 }
 #inner_right h5 {
 	margin: 10px 0 10px 0;
@@ -176,6 +176,17 @@ section small {
 #inner_right img {
 	width: 210px;
 	height: 150px;
+}
+
+#end{
+	float: left;
+	width: 225px;
+
+
+	border-top:none;
+	border-right:none;
+	border-left: none;
+	border-bottom:1px solid #A3A3A3; 
 }
 
 footer {

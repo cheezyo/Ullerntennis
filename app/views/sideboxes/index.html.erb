@@ -1,0 +1,21 @@
+
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+  </tr>
+  <% for sidebox in @sideboxes %>
+    <tr>
+      <td><%= sidebox.title %></td>
+      <td><%= sidebox.content %></td>
+      <td><%= sidebox.position %></td>
+      <td><%= sidebox.placing%></td>
+      <td><%= link_to "Show", sidebox %></td>
+      <td><%= link_to "Edit", edit_sidebox_path(sidebox) %></td>
+      <td><%= link_to "Destroy", sidebox, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Sidebox", new_sidebox_path %></p>

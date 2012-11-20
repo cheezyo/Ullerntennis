@@ -15,9 +15,9 @@
 		</style><![endif]-->
 
 		<div id="headerWrapper">
-			
+
 			<div id="wrapper">
-			<%if current_user %>	<span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
+				<%if current_user %> <span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
 				<header>
 					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
 					<div  onmouseover="change('img')" style="margin:15px 0 0 65px;width:600px;height:140px; float:left;background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bane.png');">
@@ -36,7 +36,7 @@
 					<ul id="sddm">
 						<% if current_user %>
 						<li>
-						<%= link_to 'Admin', '/admin' %>
+							<%= link_to 'Admin', '/admin' %>
 						</li>
 						<% end %>
 					</ul>
@@ -82,7 +82,14 @@
 					</div>
 
 					<div id="right">
-						<div id="inner_right" style="border-top: 1px solid #a3a3a3;">
+						<% if Sidebox.find_by_placing(-1)%>
+						<div id="inner_right">
+							<% box = Sidebox.find_by_placing(-1)%>
+							<h2><%= box.title%></h2>
+							<%= simple_format box.content %>
+						</div>
+						<% end %>
+						<div id="inner_right" >
 							<h2>Aktiviteter</h2>
 							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
 
@@ -105,24 +112,32 @@
 							<br/>
 							<% end %>
 							<% end %>
+							<br />
+							
+							<%= link_to "Vis alle", events_path%>
+						</div>
+						
+							<% Sidebox.where("position = ? AND placing != ?", "big", -1).order("placing ASC").each do |box|%>
+								
+							<div id="inner_right">
+								<h2><%= box.title %></h2>
+								<%= simple_format box.content %>
+							</div>
+							
+							
+							<% end %>
+						
 
-						</div>
-						<div id="inner_right" >
-							<h2>Banebooking</h2>
-							<a href="http://www.senserio.com/default.aspx?ID=119" target="_blank"><img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/calendar_icon1.png" alt="bilde"></a>
-						</div>
-
-						<div id="inner_right">
-							<h2>Turneringer</h2>
-							<a href="http://ntf.tournamentsoftware.com/" target="_blank"><img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/banner_tornamentsoftware.png" alt="bilde"></a>
-						</div>
+						
+						<div id="end"></div>
 					</div>
-					<div id="left">
-						<h2>Sponsorer</h2>
-						<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/logo.png" />
-						<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ccvest_logo.jpg" />
-						<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/WSF_lowres.jpg" />
-					</div>
+						<% Sidebox.where(:position => "small").order("placing ASC").each do |box|%>
+						<div id="left">
+						 <h2><%= box.title %></h2>
+						 <%= simple_format box.content %>
+						</div>
+						<% end %>
+					
 				</article>
 
 				<footer>
@@ -132,34 +147,49 @@
 						<input type="submit"  value="Søk" class="searchbutton"/>
 					</div>
 					<div id="main-footer">
-						
+
 						<div id="main-footer-img">
 							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png">
 						</div>
 						<div id="main-footer-text">
-						<h2>Kontaktinformasjon</h2>
-						<% if Contactinfo.find(:all).count > 0 %>
-						<% info = Contactinfo.find(1)%>
-							<p>Kontaktperson: <%= info.contactperson %></p>
-							<p>Telefon: <%= info.telf %></p>
-							<p>E-post: <a href="mailto:<%=info.email%>"><%=info.email%></a></p> 
-							<p>Adresse: <%= info.street %> <%= info.postalcode%></p>
-							<p><%= simple_format info.content%></p>
-						<% end %>
-						</div>	
+							<h2>Kontaktinformasjon</h2>
+							<% if Contactinfo.find(:all).count > 0 %>
+							<% info = Contactinfo.find(1)%>
+							<p>
+								Kontaktperson: <%= info.contactperson %>
+							</p>
+							<p>
+								Telefon: <%= info.telf %>
+							</p>
+							<p>
+								E-post: <a href="mailto:<%= info.email%>"><%= info.email%></a>
+							</p>
+							<p>
+								Adresse: <%= info.street %> <%= info.postalcode%>
+							</p>
+							<p>
+								<%= simple_format info.content%>
+							</p>
+							<% end %>
+						</div>
 					</div>
-					
-					<div class="footer-break"><h2>Sidekart</h2><hr/></div>
+
+					<div class="footer-break">
+						<h2>Sidekart</h2>
+						<hr/>
+					</div>
 					<% Menubutton.find(:all).each do |m|%>
 					<div id="footer-content">
-					<h3><%= m.title %></h3>
-					<% m.submenubuttons.each do |s|%>
-						<p><%= link_to s.title, s %></p>
-						
+						<h3><%= m.title %></h3>
+						<% m.submenubuttons.each do |s|%>
+						<p>
+							<%= link_to s.title, s %>
+						</p>
+
+						<% end %>
+					</div>
 					<% end %>
-						</div>
-					<% end %>
-				
+
 				</footer>
 
 			</div>

@@ -1,0 +1,21 @@
+<%= form_for @sidebox do |f| %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 40 %>
+    <%= tinymce %>
+  </p>
+ <p>
+  	<%= f.label "Rekkefølge"%><br/>
+  	<%= f.number_field :placing%>
+  </p>
+  <%= f.radio_button :position, "small" %>
+  	<%= label_tag "Liten boks" %>
+  	 <%= f.radio_button :position, "big" %>
+  	<%= label_tag "Stor boks" %>
+  <p><%= f.submit "Lagre"%></p>
+<% end %>
