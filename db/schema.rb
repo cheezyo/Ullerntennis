@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104002635) do
+ActiveRecord::Schema.define(:version => 20121121005844) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20121104002635) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "position"
-    t.integer  "placing"
+    t.integer  "inorder"
   end
 
   create_table "submenubuttons", :force => true do |t|

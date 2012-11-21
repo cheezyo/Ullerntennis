@@ -82,9 +82,9 @@
 					</div>
 				
 					<div id="right">
-						<% if Sidebox.find_by_placing(-1)%>
+						<% if Sidebox.find_by_inorder(-1)%>
 						<div id="inner_right">
-							<% box = Sidebox.find_by_placing(-1)%>
+							<% box = Sidebox.find_by_inorder(-1)%>
 							<h2><%= box.title%></h2>
 							<%= simple_format box.content %>
 						</div>
@@ -116,8 +116,8 @@
 							
 							<%= link_to "Vis alle", events_path%>
 						</div>
-							<% Sidebox.find(:all, :order => 'placing ASC').each do |box| %>
-							<% if box.placing > -1 && box.position != "small"%>
+							<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
+							<% if box.inorder > -1 && box.position != "small"%>
 								
 							<div id="inner_right">
 								<h2><%= box.title %></h2>
@@ -131,8 +131,8 @@
 						
 						<div id="end"></div>
 					</div>
-						<% Sidebox.find(:all, :order => 'placing ASC').each do |box| %>
-							<% if box.position == "small" %>
+						<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
+							<% if box.inorder == "small" %>
 						
 						<div id="left">
 						 <h2><%= box.title %></h2>
