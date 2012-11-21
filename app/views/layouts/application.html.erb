@@ -117,7 +117,7 @@
 							<%= link_to "Vis alle", events_path%>
 						</div>
 						
-							<% Sidebox.where("position = ? AND placing != ?", "big", -1).order("placing ASC").each do |box|%>
+							<% Sidebox.where("position = ? AND placing > ?", "big", -1).order("placing ASC").each do |box|%>
 								
 							<div id="inner_right">
 								<h2><%= box.title %></h2>
