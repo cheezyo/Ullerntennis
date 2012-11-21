@@ -132,7 +132,7 @@
 						<div id="end"></div>
 					</div>
 						<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
-							<% if box.inorder == "small" %>
+							<% if box.inorder > -1 && box.position ==  "small" %>
 						
 						<div id="left">
 						 <h2><%= box.title %></h2>

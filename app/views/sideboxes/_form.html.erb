@@ -5,6 +5,12 @@
     <%= f.text_field :title %>
   </p>
   <p>
+  	  <%= f.radio_button :position, "small" %>
+  	<%= label_tag "Liten boks" %>
+  	 <%= f.radio_button :position, "big" %>
+  	<%= label_tag "Stor boks" %>
+  </p>
+  <p>
     <%= f.label :content %><br />
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 40 %>
     <%= tinymce %>
@@ -13,9 +19,6 @@
   	<%= f.label "Rekkefølge"%><br/>
   	<%= f.number_field :inorder%>
   </p>
-  <%= f.radio_button :position, "small" %>
-  	<%= label_tag "Liten boks" %>
-  	 <%= f.radio_button :position, "big" %>
-  	<%= label_tag "Stor boks" %>
+
   <p><%= f.submit "Lagre"%></p>
 <% end %>

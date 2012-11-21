@@ -1,6 +1,8 @@
 class SideboxesController < ApplicationController
   def index
     @sideboxes = Sidebox.all
+    render :layout => 'admin'
+
   end
 
   def show
@@ -14,7 +16,7 @@ class SideboxesController < ApplicationController
   def create
     @sidebox = Sidebox.new(params[:sidebox])
     if @sidebox.save
-      redirect_to @sidebox, :notice => "Successfully created sidebox."
+      redirect_to root_url, :notice => "Sideboks lagt til."
     else
       render :action => 'new'
     end
@@ -27,7 +29,7 @@ class SideboxesController < ApplicationController
   def update
     @sidebox = Sidebox.find(params[:id])
     if @sidebox.update_attributes(params[:sidebox])
-      redirect_to @sidebox, :notice  => "Successfully updated sidebox."
+      redirect_to root_url, :notice  => "Sideboks oppdatert"
     else
       render :action => 'edit'
     end
@@ -36,6 +38,6 @@ class SideboxesController < ApplicationController
   def destroy
     @sidebox = Sidebox.find(params[:id])
     @sidebox.destroy
-    redirect_to sideboxes_url, :notice => "Successfully destroyed sidebox."
+    redirect_to sideboxes_url, :notice => "Sideboks slettet"
   end
 end
