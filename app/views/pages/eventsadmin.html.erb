@@ -21,7 +21,7 @@
 </tr>
 	
 	<% Event.find(:all, :order => "endofevent ASC").each do |a| %>
-	<% if a.dateofevent > Date.today%>
+	<% if a.dateofevent >= Date.today%>
 	
 	<tr>
 		<td><a style="float:left;" href="<%= edit_event_path (a) %>"><%= a.title %></a></td>
