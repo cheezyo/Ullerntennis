@@ -81,6 +81,65 @@
 						<%= yield %>
 					</div>
 				
+					<div id="right">
+						<% if Sidebox.find_by_placing(-1)%>
+						<div id="inner_right">
+							<% box = Sidebox.find_by_placing(-1)%>
+							<h2><%= box.title%></h2>
+							<%= simple_format box.content %>
+						</div>
+						<% end %>
+						<div id="inner_right" >
+							<h2>Aktiviteter</h2>
+							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
+
+							<h5><%= humanDate Date.today.month %></h5>
+							<% @events.each do |e|%>
+							<% if e.dateofevent.month == Date.today.month %>
+
+							<%= e.dateofevent.day %>-<%= e.endofevent.day %>
+							<a href="/events/<%= e.id %>"><%= e.title %></a>
+							<br/>
+							<% end %>
+							<% end %>
+
+							<h5><%= humanDate Date.today.next_month.month %></h5>
+							<% @events.each do |e|%>
+							<%  if e.dateofevent.month == Date.today.next_month.month %>
+
+							<%= e.dateofevent.day %>-<%= e.endofevent.day %>
+							<a href="/events/<%= e.id %>"><%= e.title %></a>
+							<br/>
+							<% end %>
+							<% end %>
+							<br />
+							
+							<%= link_to "Vis alle", events_path%>
+						</div>
+						
+							<% Sidebox.where("position = ? AND placing != ?", "big", -1).order("placing ASC").each do |box|%>
+								
+							<div id="inner_right">
+								<h2><%= box.title %></h2>
+								<%= simple_format box.content %>
+							</div>
+							
+							
+							<% end %>
+						
+
+						
+						<div id="end"></div>
+					</div>
+						<% Sidebox.where(:position => "small").order("placing ASC").each do |box|%>
+						<div id="left">
+						 <h2><%= box.title %></h2>
+						 <%= simple_format box.content %>
+						</div>
+						<% end %>
+					
+				</article>
+			
 				<footer>
 					<div id="footer-search">
 						<h2>Søk her:</h2>
