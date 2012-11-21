@@ -116,7 +116,7 @@
 							
 							<%= link_to "Vis alle", events_path%>
 						</div>
-							<% Sidebox.find(:all, :order => "placing ASC").each do |box| %>
+							<% Sidebox.find(:all, :order => 'placing ASC').each do |box| %>
 							<% if box.placing > -1 && box.position != "small"%>
 								
 							<div id="inner_right">
@@ -131,7 +131,7 @@
 						
 						<div id="end"></div>
 					</div>
-						<% Sidebox.find(:all, :order => "placing ASC").each do |box| %>
+						<% Sidebox.find(:all, :order => 'placing ASC').each do |box| %>
 							<% if box.position == "small" %>
 						
 						<div id="left">
