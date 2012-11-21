@@ -117,13 +117,13 @@
 							<%= link_to "Vis alle", events_path%>
 						</div>
 						
-							<% Sidebox.where("position like ? AND placing > ?", "big", -1).order("placing ASC").each do |box|%>
-								
+							<% Sidebox.where(:position => "big").order("placing ASC").each do |box|%>
+								<% if box.placing > -1 %>
 							<div id="inner_right">
 								<h2><%= box.title %></h2>
 								<%= simple_format box.content %>
 							</div>
-							
+							<% end %>
 							
 							<% end %>
 						
