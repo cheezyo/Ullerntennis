@@ -1,0 +1,35 @@
+<div id="admin">
+	<p><%= link_to "<< Tilbake", '/pagesadmin'%></p><br/>
+	<div id="panel">
+<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/Anonymous_Text_Page_Icon.png" alt="pic" class="left" />
+<h1>Hovedmeny administrasjon</h1>
+</div>
+<div id="plusswrapper">
+<a href="/submenubuttons/new"><img class="pluss" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/green_plus_add.png" alt="pluss"/>
+</a>
+<h3><%= link_to 'Legg til nytt underside', new_submenubutton_path %></h3>
+</div>
+<h3><%= @menubutton.title%></h3>
+<table class="pages" style="border-collapse: collapse;">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		
+	</tr>
+	<% num = 1 %>
+	<% @menubutton.submenubuttons.each do |s| %>
+	
+	<tr>
+		<td style="text-align: left;"><a href="<%= edit_submenubutton_path (s) %>"><%= s.title%></a></td>
+		<td><a href="<%= edit_submenubutton_path (s) %>">Rediger</a></td>
+		<td><%= link_to "Slett", s, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= link_to "Vis", s %></td>
+	</tr>
+
+	
+	<% end %>
+
+</table>
+</div>

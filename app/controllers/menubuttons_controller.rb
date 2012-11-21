@@ -17,7 +17,7 @@ class MenubuttonsController < ApplicationController
   def create
     @menubutton = Menubutton.new(params[:menubutton])
     if @menubutton.save
-      redirect_to @menubutton, :notice => "Nytt menypunkt opprettet"
+      redirect_to '/pagesadmin', :notice => "Nytt menypunkt opprettet"
     else
       render :action => 'new'
     end
@@ -30,7 +30,7 @@ class MenubuttonsController < ApplicationController
   def update
     @menubutton = Menubutton.find(params[:id])
     if @menubutton.update_attributes(params[:menubutton])
-      redirect_to @menubutton, :notice  => "Menypunkt oppdatert"
+      redirect_to '/pagesadmin', :notice  => "Menypunkt oppdatert"
     else
       render :action => 'edit'
     end
@@ -39,6 +39,6 @@ class MenubuttonsController < ApplicationController
   def destroy
     @menubutton = Menubutton.find(params[:id])
     @menubutton.destroy
-    redirect_to menubuttons_url, :notice => "Menypunkt slettet"
+    redirect_to '/pagesadmin', :notice => "Menypunkt slettet"
   end
 end

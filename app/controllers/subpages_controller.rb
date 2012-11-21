@@ -37,6 +37,6 @@ class SubpagesController < ApplicationController
   def destroy
     @subpage = Subpage.find(params[:id])
     @subpage.destroy
-    redirect_to subpages_url, :notice => "Underside slettet"
+    redirect_to '/admin', :notice => "Underside slettet"
   end
 end

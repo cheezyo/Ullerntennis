@@ -4,17 +4,17 @@
     <%= f.label "Tittle" %><br />
     <%= f.text_field :title %>
   </p>
+    <p>
+  	<h3>Plassering</h3>
+  	<%= f.collection_select(:menubutton_id, Menubutton.all, :id, :title) %>
+  	
+  
+  </p>
   <p>
     <%= f.label "Innhold" %><br />
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 65 %>
     <%= tinymce %>
   </p>
-  <p>
-  	<h3>Plassering</h3>
-  	<% Menubutton.find(:all).each do |m| %>
-  	<%= f.radio_button :menubutton_id, m.id %>
-  	<%= label_tag m.title %>
-  	<% end %>
-  </p>
+
   <p><%= f.submit "Largre" %></p>
 <% end %>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
         
-      redirect_to @user, :notice => "Bruker opprettet"
+      redirect_to '/admin', :notice => "Bruker opprettet"
     else
       render :action => 'new'
     end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user, :notice  => "Bruker oppdatert"
+      redirect_to '/admin', :notice  => "Bruker oppdatert"
     else
       render :action => 'edit'
     end
@@ -40,6 +40,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_url, :notice => "Bruker slettet"
+    redirect_to '/admin', :notice => "Bruker slettet"
   end
 end

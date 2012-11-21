@@ -17,7 +17,7 @@ class SubmenubuttonsController < ApplicationController
     
     @submenubutton = Submenubutton.new(params[:submenubutton])
     if @submenubutton.save
-      redirect_to "/admin", :notice => "Ny side lagt til"
+      redirect_to @submenubutton, :notice => "Ny side lagt til"
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class SubmenubuttonsController < ApplicationController
     @submenubutton = Submenubutton.find(params[:id])
     if @submenubutton.update_attributes(params[:submenubutton])
       @menubutton = Menubutton.find(@submenubutton.menubutton_id)
-      redirect_to @menubutton, :notice  => "Side oppdatert"
+      redirect_to @submenubutton, :notice  => "Side oppdatert"
     else
       render :action => 'edit'
     end
@@ -41,6 +41,6 @@ class SubmenubuttonsController < ApplicationController
   def destroy
     @submenubutton = Submenubutton.find(params[:id])
     @submenubutton.destroy
-    redirect_to submenubuttons_url, :notice => "Side slettet"
+    redirect_to '/admin', :notice => "Side slettet"
   end
 end
