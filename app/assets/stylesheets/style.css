@@ -124,19 +124,19 @@ section small {
 	font-style: italic;
 }
 
-#left {
+#small-bar {
 	float: left;
 	width: 150px;
 	height: auto;
 	border: 1px solid #a3a3a3;
 	border-left: none;
 }
-#left img {
+#small-bar img {
 	width: 140px;
 	margin-bottom: 5px;
 	padding-left: 5px;
 }
-#left h1, h2 {
+#small-bar h1, h2 {
 	padding-left: 5px;
 }
 #center {
@@ -157,38 +157,51 @@ section small {
 
 	margin-bottom: 0;
 }
-#right {
+#big-bar-wrap {
 	float: left;
 	width: 225px;
 	height: auto;
 }
-#inner_right {
+#big-bar {
 	float: left;
 	width: 218px;
-	padding: 0 0 15px 5px;
+	padding: 0 0 10px 5px;
 	border: 1px solid #a3a3a3;
 	border-bottom: none;
 }
-#inner_right h5 {
-	margin: 10px 0 10px 0;
-}
 
-#inner_right img {
+
+#big-bar img {
 	width: 210px;
 	height: 150px;
+}
+#big-bar h5{
+	margin:0 0 10px 0;
 }
 
 #end{
 	float: left;
 	width: 225px;
-
-
 	border-top:none;
 	border-right:none;
 	border-left: none;
 	border-bottom:1px solid #A3A3A3; 
 }
+.small-event{
+	width:215px;
+	float:left;
+	margin:5px 0 5px 0;
+}
+.date-holder{
+	float:left;
+	width:40px;
+	margin:0 5px 0 0;
+}
 
+.event-title{
+	float:left;
+	width: 165px;
+}
 footer {
 	float: left;
 	width: 960px;

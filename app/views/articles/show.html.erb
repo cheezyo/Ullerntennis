@@ -1,8 +1,12 @@
 <div id="article_header">
-	<% if ! @article.picture.empty? %><img src="<%= @article.picture %>" alt="bilde"/><% end  %> <h1><%= @article.title %></h1>
+	<% if ! @article.picture.empty? %><img src="<%= @article.picture %>" alt="bilde"/><% end  %> 
+	<h1><%= @article.title %></h1>
+	<p><b><%= @article.ingress %></b></p>
 	<p>
 		<small><%= @article.created_at.strftime("%d %b. %Y")%></small>
 	</p>
+	<hr/>
+	
 </div>
 <div id="article_content">
 	<%= simple_format @article.content %>

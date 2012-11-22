@@ -81,45 +81,60 @@
 						<%= yield %>
 					</div>
 				
-					<div id="right">
+					<div id="big-bar-wrap">
 						<% if Sidebox.find_by_inorder(-1)%>
-						<div id="inner_right">
+						<div id="big-bar">
 							<% box = Sidebox.find_by_inorder(-1)%>
 							<h2><%= box.title%></h2>
 							<%= simple_format box.content %>
 						</div>
 						<% end %>
-						<div id="inner_right" >
+						<div id="big-bar" >
 							<h2>Aktiviteter</h2>
 							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
 
 							<h5><%= humanDate Date.today.month %></h5>
 							<% @events.each do |e|%>
 							<% if e.dateofevent.month == Date.today.month %>
-
-							<%= e.dateofevent.day %>-<%= e.endofevent.day %>
+							<div class="small-event">
+								<div class="date-holder">
+							<% if e.dateofevent.day == e.endofevent.day %>
+								<b><%= e.dateofevent.day %></b>
+							<% else%>
+							<b><%= e.dateofevent.day %>-<%= e.endofevent.day %></b>
+							<% end %>
+								</div>
+								<div class="event-title">
 							<a href="/events/<%= e.id %>"><%= e.title %></a>
-							<br/>
+								</div>
+							</div>
 							<% end %>
 							<% end %>
 
 							<h5><%= humanDate Date.today.next_month.month %></h5>
 							<% @events.each do |e|%>
 							<%  if e.dateofevent.month == Date.today.next_month.month %>
-
-							<%= e.dateofevent.day %>-<%= e.endofevent.day %>
+							<div class="small-event">
+								<div class="date-holder">
+							<% if e.dateofevent.day == e.endofevent.day %>
+								<b><%= e.dateofevent.day %></b>
+							<% else%>
+							<b><%= e.dateofevent.day %>-<%= e.endofevent.day %></b>
+							<% end %>
+							</div>
+								<div class="event-title">
 							<a href="/events/<%= e.id %>"><%= e.title %></a>
-							<br/>
+								</div>
+							</div>
 							<% end %>
 							<% end %>
-							<br />
 							
 							<%= link_to "Vis alle", events_path%>
 						</div>
 							<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
 							<% if box.inorder > -1 && box.position != "small"%>
 								
-							<div id="inner_right">
+							<div id="big-bar">
 								<h2><%= box.title %></h2>
 								<%= simple_format box.content %>
 							</div>
@@ -134,7 +149,7 @@
 						<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
 							<% if box.inorder > -1 && box.position ==  "small" %>
 						
-						<div id="left">
+						<div id="small-bar">
 						 <h2><%= box.title %></h2>
 						 <%= simple_format box.content %>
 						</div>
