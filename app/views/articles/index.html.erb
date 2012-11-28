@@ -31,7 +31,7 @@
 			<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a>
 			
 			</div><%end%>
-			<div id="ingress">
+			<div id="ingress" <% if  a.picture.empty?%> style="width:540px;"<%end%>>
 			<a href="articles/<%= a.id%>"><h3><%= a.title %></h3></a>
 			<small><%= a.author + " " + a.created_at.strftime("%d %b. %Y") %></small>
 				<p>
