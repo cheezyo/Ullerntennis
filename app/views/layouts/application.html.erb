@@ -46,16 +46,13 @@
 					<ul id="sddm">
 
 						<li>
-							<a href="#"
-							onmouseover="mopen('m<%= n %>')"
-							onmouseout="mclosetime()"><%= m.title%></a>
+							<a href="javascript:void(0)" 
+							onmouseover="mopen('m<%= n %>')" onmouseout="mclosetime()"><%= m.title%></a>
 
 							<% if m.submenubuttons != 0 %>
 							<div id="m<%= n %>" onmouseover="mcancelclosetime()"
 							onmouseout="mclosetime()">
-								<% if title == "Arrangementer " %>
-								<%= link_to 'Aktivitets kalender', events_path %>
-								<% end %>
+								
 								<% m.submenubuttons.each do |s| %>
 
 								<%= link_to s.title, s %>
@@ -91,7 +88,7 @@
 						<% end %>
 						<div id="big-bar" >
 							<h2>Aktiviteter</h2>
-							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month]) %>
+							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month], :order => 'dateofevent') %>
 
 							<h5><%= humanDate Date.today.month %></h5>
 							<% @events.each do |e|%>
@@ -159,9 +156,7 @@
 			
 				<footer>
 					<div id="footer-search">
-						<h2>Søk her:</h2>
-						<input type="text" class="searchbox" />
-						<input type="submit"  value="Søk" class="searchbutton"/>
+						
 					</div>
 					<div id="main-footer">
 

@@ -1,7 +1,7 @@
 <% "Events" %>
 
 	<h2>Aktiviteter</h2>
-					<%  @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.next_month.end_of_month]) %>
+					<%  @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.next_month.end_of_month],:order => 'dateofevent') %>
 					
 					<h5><%= humanDate Date.today.month %></h5>
 					<% @events.each do |e|%>

@@ -20,13 +20,13 @@
 	
 </tr>
 	
-	<% Event.find(:all, :order => "endofevent ASC").each do |a| %>
+	<% Event.find(:all, :order => 'dateofevent').each do |a| %>
 	<% if a.dateofevent >= Date.today%>
 	
 	<tr>
 		<td><a style="float:left;" href="<%= edit_event_path (a) %>"><%= a.title %></a></td>
-		<td><%= a.dateofevent %></td>
-		<td><%= a.endofevent%></td>
+		<td><%= a.dateofevent.day %>-<%= a.dateofevent.month%>-<%= a.dateofevent.year%></td>
+		<td><%= a.endofevent.day %>-<%= a.endofevent.month%>-<%=  a.endofevent.year %></td>
 		<td><%= link_to 'Vis', a%></td>
 		<td><a href="<%= edit_event_path (a) %>">Rediger</a></td>
 		<td><%= link_to "Slett", a, :confirm => 'Are you sure?', :method => :delete %></td>	
