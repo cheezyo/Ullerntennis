@@ -32,7 +32,7 @@
 			
 			</div><%end%>
 			<div id="ingress" <% if  a.picture.empty?%> style="width:540px;"<%end%>>
-			<a href="articles/<%= a.id%>"><h3><%= a.title %></h3></a>
+			<a href="articles/<%= a.id%>"><h2><%= a.title %></h2></a>
 			<small><%= a.author + " " + a.created_at.strftime("%d %b. %Y") %></small>
 				<p>
 			<%= simple_format ingress.truncate(128) %>
@@ -45,7 +45,7 @@
 
 	<div id="old_news">
 	<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/>
-	<h5><%= a.title %></h5></a>
+	<h3><%= a.title %></h3></a>
 	</div>
 
 <% end %>

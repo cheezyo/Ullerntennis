@@ -92,34 +92,7 @@ section img {
 	margin-top: 20px;
 }
 
-#image {
-	width: 215px;
-	float: left;
-}
-#ingress {
-	width: 320px;
-	float: left;
-	padding-left: 5px;
-}
-#pagination_wrapper {
-	width:550px;
-	margin:10px 0 20px 0;
-	float:left;
-}
-#old_news {
-	margin-top: 15px;
-	float: left;
-	width: 180px;
-}
 
-#old_news h5 {
-	margin-top: -5px;
-	margin-left: 5px;
-}
-#old_news img {
-	width: 175px;
-	height: 100px;
-}
 section small {
 	font-style: italic;
 }
@@ -309,3 +282,5 @@ p {
 	line-height: 1.4em;
 	margin:0px;
 }
+
+
