@@ -20,6 +20,11 @@
 		<div id="headerWrapper">
 
 			<div id="wrapper">
+				<!--[if IE]>
+					<div style="float:left;padding:5px;">
+					<a href="http://stormy-thicket-5517.herokuapp.com" style="font-size:15px; padding:5px; background:#a1f43d;">Du bruker Internet Explorer og dermed kan det være problemer med side visningen. Hvis siden ikke ser bra ut trykk her for å få en tilpasset layout.</a>
+				</div>
+					<![endif]-->
 				<%if current_user %> <span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
 				<header>
 					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
