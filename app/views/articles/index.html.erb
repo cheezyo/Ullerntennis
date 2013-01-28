@@ -27,6 +27,7 @@
 
 <% elsif n < 4 %>
 <div id="section">
+	<div class="middle">
 			<% if ! a.picture.empty? %><div id="image">
 			<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a>
 			
@@ -38,6 +39,7 @@
 			<%= simple_format ingress.truncate(128) %>
 			 </p>
 			 <%= link_to "Les mer...", a%>
+			 </div>
 			 </div>
 
 </div>
