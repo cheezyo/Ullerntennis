@@ -134,30 +134,8 @@
 						<a href="http://www.senserio.com/default.aspx?ID=119" target="_blank">
 							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/calendar_icon1.png" alt="picture" /> </a>
 						</div>
-							<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
-							<% if box.inorder > -1 && box.position != "small"%>
-								
-							<div id="big-bar">
-								<h2><%= box.title %></h2>
-								<%= simple_format box.content %>
-							</div>
-							<% end %>
-							
-							<% end %>
-						
 
-						
 						<div id="end"></div>
-					</div>
-						<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
-							<% if box.inorder > -1 && box.position ==  "small" %>
-						
-						<div id="small-bar">
-						 <h2><%= box.title %></h2>
-						 <%= simple_format box.content %>
-						</div>
-						<% end %>
-						<% end %>
 				</article>
 			
 				<footer>
