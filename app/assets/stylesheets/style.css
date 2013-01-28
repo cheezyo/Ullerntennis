@@ -104,6 +104,10 @@ section small {
 	border: 1px solid #a3a3a3;
 	border-left: none;
 }
+
+#small-bar p {
+	padding:0 0 0 5px;
+}
 #small-bar img {
 	width: 140px;
 	margin-bottom: 5px;
