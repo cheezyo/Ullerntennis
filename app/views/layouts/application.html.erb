@@ -2,9 +2,7 @@
 <html>
 	<head>
 		<title>UllernTennis</title>
-		<!--[if IE]>
-			<link rel="stylesheet" type="text/css" href="http://ullerntennis.no/dok/Dokumenter/all.css">
-		<![endif]-->
+		
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
@@ -31,16 +29,16 @@
 				</div>
 					<![endif]-->
 				<%if current_user %> <span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
-				<header>
+				<div id="header">
 					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
 					<div  onmouseover="change('img')" style="margin:15px 0 0 65px;width:600px;height:140px; float:left;background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bane.png');">
 						<img name="img" style="float:right;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/incourt.png" alt="logo"/>
 
 					</div>
 					<img style="float:right;margin:15px 15px 0 0;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
-				</header>
+				</div>
 
-				<nav>
+				<div id="nav">
 					<ul id="sddm">
 						<li>
 							<%= link_to 'Hjem', articles_path %>
@@ -79,13 +77,13 @@
 					<% end %>
 					<div style="clear:both"></div>
 
-				</nav>
+				</div>
 				<% flash.each do |key, value| %>
 				<div class="flash<%= key  %>">
 					<h3><%= value %></h3>
 				</div>
 				<% end %>
-				<article>
+				<div id="article">
 
 					<div id="center">
 						<%= yield %>
@@ -172,9 +170,9 @@
 						<% end %>
 						<% end %>
 					
-				</article>
+				</div>
 			
-				<footer>
+				<div id="footer">
 					<div id="footer-search">
 						
 					</div>
@@ -222,7 +220,7 @@
 					</div>
 					<% end %>
 
-				</footer>
+				</div>
 
 			</div>
 		</div>

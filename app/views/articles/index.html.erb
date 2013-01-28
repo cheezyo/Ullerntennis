@@ -9,7 +9,7 @@
 <% end %>
 <% if a == @articles.first %>
 
-<section>
+<div id="section">
 	<div id="head_news">
 		<a href="articles/<%= a.id%>"><h1><%= a.title %></h1></a>
 		<% if ! a.picture.empty? %><a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a><% end %>
@@ -20,13 +20,13 @@
 			</p>
 			<%= link_to "Les mer...", a%>
 	</div>
-</section>
+</div>
 
 
 
 
 <% elsif n < 4 %>
-<section>
+<div id="section">
 			<% if ! a.picture.empty? %><div id="image">
 			<a href="articles/<%= a.id%>"><img src="<%= a.picture %>" alt="bilde"/></a>
 			
@@ -40,7 +40,7 @@
 			 <%= link_to "Les mer...", a%>
 			 </div>
 
-</section>
+</div>
 <% else %>
 
 	<div id="old_news">
