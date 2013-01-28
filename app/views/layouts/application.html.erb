@@ -15,213 +15,6 @@
 		background-color:#787878;
 		}
 		
-		</style><![endif]-->
-
-		<div id="headerWrapper">
-
-			<div id="wrapper">
-				<!--[if IE]>
-					<div style="float:left;padding:5px;">
-					<a href="http://stormy-thicket-5517.herokuapp.com" target="_blank" style="font-size:15px; padding:5px; background:#a1f43d;">Du bruker Internet Explorer og dermed kan det være problemer med side visningen. Hvis siden ikke ser bra ut trykk her for å få en tilpasset layout.</a>
-				</div>
-					<![endif]-->
-				<%if current_user %> <span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
-				<header>
-					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
-					<div  onmouseover="change('img')" style="margin:15px 0 0 65px;width:600px;height:140px; float:left;background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bane.png');">
-						<img name="img" style="float:right;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/incourt.png" alt="logo"/>
-
-					</div>
-					<img style="float:right;margin:15px 15px 0 0;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
-				</header>
-
-				<nav>
-					<ul id="sddm">
-						<li>
-							<%= link_to 'Hjem', articles_path %>
-						</li>
-					</ul>
-					<ul id="sddm">
-						<% if current_user %>
-						<li>
-							<%= link_to 'Admin', '/admin' %>
-						</li>
-						<% end %>
-					</ul>
-					<% n = 1 %>
-					<% Menubutton.find(:all,:order => 'inorder ASC').each do |m|%>
-					<% title = m.title %>
-					<ul id="sddm">
-
-						<li>
-							<a href="javascript:void(0)" 
-							onmouseover="mopen('m<%= n %>')" onmouseout="mclosetime()"><%= m.title%></a>
-
-							<% if m.submenubuttons != 0 %>
-							<div id="m<%= n %>" onmouseover="mcancelclosetime()"
-							onmouseout="mclosetime()">
-								
-								<% m.submenubuttons.each do |s| %>
-
-								<%= link_to s.title, s %>
-								<% end %>
-
-							</div>
-							<% end%>
-						</li>
-					</ul>
-					<% n+= 1 %>
-					<% end %>
-					<div style="clear:both"></div>
-
-				</nav>
-				<% flash.each do |key, value| %>
-				<div class="flash<%= key  %>">
-					<h3><%= value %></h3>
-				</div>
-				<% end %>
-				<article>
-
-					<div id="center">
-						<%= yield %>
-					</div>
-				
-					<div id="big-bar-wrap">
-						<% if Sidebox.find_by_inorder(-1)%>
-						<div id="big-bar">
-							<% box = Sidebox.find_by_inorder(-1)%>
-							<h2><%= box.title%></h2>
-							<%= simple_format box.content %>
-						</div>
-						<% end %>
-						<div id="big-bar" >
-							<h2>Aktiviteter</h2>
-							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month], :order => 'dateofevent') %>
-
-							<h5><%= humanDate Date.today.month %></h5>
-							<% @events.each do |e|%>
-							<% if e.dateofevent.month == Date.today.month %>
-							<div class="small-event">
-								<div class="date-holder">
-							<% if e.dateofevent.day == e.endofevent.day %>
-								<b><%= e.dateofevent.day %></b>
-							<% else%>
-							<b><%= e.dateofevent.day %>-<%= e.endofevent.day %></b>
-							<% end %>
-								</div>
-								<div class="event-title">
-							<a href="/events/<%= e.id %>"><%= e.title %></a>
-								</div>
-							</div>
-							<% end %>
-							<% end %>
-
-							<h5><%= humanDate Date.today.next_month.month %></h5>
-							<% @events.each do |e|%>
-							<%  if e.dateofevent.month == Date.today.next_month.month %>
-							<div class="small-event">
-								<div class="date-holder">
-							<% if e.dateofevent.day == e.endofevent.day %>
-								<b><%= e.dateofevent.day %></b>
-							<% else%>
-							<b><%= e.dateofevent.day %>-<%= e.endofevent.day %></b>
-							<% end %>
-							</div>
-								<div class="event-title">
-							<a href="/events/<%= e.id %>"><%= e.title %></a>
-								</div>
-							</div>
-							<% end %>
-							<% end %>
-							
-							<%= link_to "Vis alle", events_path%>
-							
-						</div>
-						<div id="big-bar">
-							<h2>Bestille innebane</h2>
-						<a href="http://www.senserio.com/default.aspx?ID=119" target="_blank">
-							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/calendar_icon1.png" alt="picture" /> </a>
-						</div>
-							<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
-							<% if box.inorder > -1 && box.position != "small"%>
-								
-							<div id="big-bar">
-								<h2><%= box.title %></h2>
-								<%= simple_format box.content %>
-							</div>
-							<% end %>
-							
-							<% end %>
-						
-
-						
-						<div id="end"></div>
-					</div>
-						<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
-							<% if box.inorder > -1 && box.position ==  "small" %>
-						
-						<div id="small-bar">
-						 <h2><%= box.title %></h2>
-						 <%= simple_format box.content %>
-						</div>
-						<% end %>
-						<% end %>
-					
-				</article>
-			
-				<footer>
-					<div id="footer-search">
-						
-					</div>
-					<div id="main-footer">
-
-						<div id="main-footer-img">
-							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png">
-						</div>
-						<div id="main-footer-text">
-							<h2>Kontaktinformasjon</h2>
-							<% if Contactinfo.find(:all).count > 0 %>
-							<% info = Contactinfo.find(1)%>
-							<p>
-								Kontaktperson: <%= info.contactperson %>
-							</p>
-							<p>
-								Telefon: <%= info.telf %>
-							</p>
-							<p>
-								E-post: <a href="mailto:<%= info.email%>"><%= info.email%></a>
-							</p>
-							<p>
-								Adresse: <%= info.street %> <%= info.postalcode%>
-							</p>
-							<p>
-								<%= simple_format info.content%>
-							</p>
-							<% end %>
-						</div>
-					</div>
-
-					<div class="footer-break">
-						<h2>Sidekart</h2>
-						<hr/>
-					</div>
-					<% Menubutton.find(:all).each do |m|%>
-					<div id="footer-content">
-						<h3><%= m.title %></h3>
-						<% m.submenubuttons.each do |s|%>
-						<p>
-							<%= link_to s.title, s %>
-						</p>
-
-						<% end %>
-					</div>
-					<% end %>
-
-				</footer>
-
-			</div>
-		</div>
-		<!--[if IE]><style>
 		#admin{
 	width:960px;
 	height:auto;
@@ -803,5 +596,210 @@ p {
   .flickr_pagination .next_page {
     margin-left: 1em; }
 		</style><![endif]-->
+		<div id="headerWrapper">
+
+			<div id="wrapper">
+				<!--[if IE]>
+					<div style="float:left;padding:5px;">
+					<a href="http://stormy-thicket-5517.herokuapp.com" target="_blank" style="font-size:15px; padding:5px; background:#a1f43d;">Du bruker Internet Explorer og dermed kan det være problemer med side visningen. Hvis siden ikke ser bra ut trykk her for å få en tilpasset layout.</a>
+				</div>
+					<![endif]-->
+				<%if current_user %> <span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
+				<header>
+					<img style="float:left;margin:15px 0 0 15px;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
+					<div  onmouseover="change('img')" style="margin:15px 0 0 65px;width:600px;height:140px; float:left;background-image: url('https://dl.dropbox.com/u/7238474/Ullerntennisbilder/bane.png');">
+						<img name="img" style="float:right;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/incourt.png" alt="logo"/>
+
+					</div>
+					<img style="float:right;margin:15px 15px 0 0;" src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png" alt="logo"/>
+				</header>
+
+				<nav>
+					<ul id="sddm">
+						<li>
+							<%= link_to 'Hjem', articles_path %>
+						</li>
+					</ul>
+					<ul id="sddm">
+						<% if current_user %>
+						<li>
+							<%= link_to 'Admin', '/admin' %>
+						</li>
+						<% end %>
+					</ul>
+					<% n = 1 %>
+					<% Menubutton.find(:all,:order => 'inorder ASC').each do |m|%>
+					<% title = m.title %>
+					<ul id="sddm">
+
+						<li>
+							<a href="javascript:void(0)" 
+							onmouseover="mopen('m<%= n %>')" onmouseout="mclosetime()"><%= m.title%></a>
+
+							<% if m.submenubuttons != 0 %>
+							<div id="m<%= n %>" onmouseover="mcancelclosetime()"
+							onmouseout="mclosetime()">
+								
+								<% m.submenubuttons.each do |s| %>
+
+								<%= link_to s.title, s %>
+								<% end %>
+
+							</div>
+							<% end%>
+						</li>
+					</ul>
+					<% n+= 1 %>
+					<% end %>
+					<div style="clear:both"></div>
+
+				</nav>
+				<% flash.each do |key, value| %>
+				<div class="flash<%= key  %>">
+					<h3><%= value %></h3>
+				</div>
+				<% end %>
+				<article>
+
+					<div id="center">
+						<%= yield %>
+					</div>
+				
+					<div id="big-bar-wrap">
+						<% if Sidebox.find_by_inorder(-1)%>
+						<div id="big-bar">
+							<% box = Sidebox.find_by_inorder(-1)%>
+							<h2><%= box.title%></h2>
+							<%= simple_format box.content %>
+						</div>
+						<% end %>
+						<div id="big-bar" >
+							<h2>Aktiviteter</h2>
+							<% @events = Event.find(:all, :conditions => ["dateofevent between ? and ?",Date.today, Date.today.next_month.end_of_month], :order => 'dateofevent') %>
+
+							<h5><%= humanDate Date.today.month %></h5>
+							<% @events.each do |e|%>
+							<% if e.dateofevent.month == Date.today.month %>
+							<div class="small-event">
+								<div class="date-holder">
+							<% if e.dateofevent.day == e.endofevent.day %>
+								<b><%= e.dateofevent.day %></b>
+							<% else%>
+							<b><%= e.dateofevent.day %>-<%= e.endofevent.day %></b>
+							<% end %>
+								</div>
+								<div class="event-title">
+							<a href="/events/<%= e.id %>"><%= e.title %></a>
+								</div>
+							</div>
+							<% end %>
+							<% end %>
+
+							<h5><%= humanDate Date.today.next_month.month %></h5>
+							<% @events.each do |e|%>
+							<%  if e.dateofevent.month == Date.today.next_month.month %>
+							<div class="small-event">
+								<div class="date-holder">
+							<% if e.dateofevent.day == e.endofevent.day %>
+								<b><%= e.dateofevent.day %></b>
+							<% else%>
+							<b><%= e.dateofevent.day %>-<%= e.endofevent.day %></b>
+							<% end %>
+							</div>
+								<div class="event-title">
+							<a href="/events/<%= e.id %>"><%= e.title %></a>
+								</div>
+							</div>
+							<% end %>
+							<% end %>
+							
+							<%= link_to "Vis alle", events_path%>
+							
+						</div>
+						<div id="big-bar">
+							<h2>Bestille innebane</h2>
+						<a href="http://www.senserio.com/default.aspx?ID=119" target="_blank">
+							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/calendar_icon1.png" alt="picture" /> </a>
+						</div>
+							<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
+							<% if box.inorder > -1 && box.position != "small"%>
+								
+							<div id="big-bar">
+								<h2><%= box.title %></h2>
+								<%= simple_format box.content %>
+							</div>
+							<% end %>
+							
+							<% end %>
+						
+
+						
+						<div id="end"></div>
+					</div>
+						<% Sidebox.find(:all, :order => 'inorder ASC').each do |box| %>
+							<% if box.inorder > -1 && box.position ==  "small" %>
+						
+						<div id="small-bar">
+						 <h2><%= box.title %></h2>
+						 <%= simple_format box.content %>
+						</div>
+						<% end %>
+						<% end %>
+					
+				</article>
+			
+				<footer>
+					<div id="footer-search">
+						
+					</div>
+					<div id="main-footer">
+
+						<div id="main-footer-img">
+							<img src="https://dl.dropbox.com/u/7238474/Ullerntennisbilder/ballullern.png">
+						</div>
+						<div id="main-footer-text">
+							<h2>Kontaktinformasjon</h2>
+							<% if Contactinfo.find(:all).count > 0 %>
+							<% info = Contactinfo.find(1)%>
+							<p>
+								Kontaktperson: <%= info.contactperson %>
+							</p>
+							<p>
+								Telefon: <%= info.telf %>
+							</p>
+							<p>
+								E-post: <a href="mailto:<%= info.email%>"><%= info.email%></a>
+							</p>
+							<p>
+								Adresse: <%= info.street %> <%= info.postalcode%>
+							</p>
+							<p>
+								<%= simple_format info.content%>
+							</p>
+							<% end %>
+						</div>
+					</div>
+
+					<div class="footer-break">
+						<h2>Sidekart</h2>
+						<hr/>
+					</div>
+					<% Menubutton.find(:all).each do |m|%>
+					<div id="footer-content">
+						<h3><%= m.title %></h3>
+						<% m.submenubuttons.each do |s|%>
+						<p>
+							<%= link_to s.title, s %>
+						</p>
+
+						<% end %>
+					</div>
+					<% end %>
+
+				</footer>
+
+			</div>
+		</div>
+
 	</body>
 </html>
