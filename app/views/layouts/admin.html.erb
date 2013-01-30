@@ -13,11 +13,11 @@
 
 			<div id="wrapper">
 				<%if current_user %><span style="float:right; margin-right: 20px;"><%= link_to "Logg ut", "/logout"%></span><% end %>
-				<header>
+				<div id="header">
 					<h1 style="color:#fff; margin:70px 0 0 40px; "> Administrasjonspanel </h1>
-				</header>
+				</div>
 
-				<nav>
+				<div id="nav">
 					<ul id="sddm">
 						<li>
 							<%= link_to 'Hjem', articles_path %>
@@ -51,24 +51,24 @@
 					<% end %>
 					<div style="clear:both"></div>
 
-				</nav>
+				</div>
 				<% flash.each do |key, value| %>
 				<div class="flash<%= key  %>">
 					<h3><%= value %></h3>
 				</div>
 				<% end %>
-				<article>
+				<div id="article">
 
 					<div id="admin">
 						<%= yield %>
 					</div>
 
-				</article>
-				<footer>
+				</div>
+				<div id="footer">
 					<p>
 					
 					</p>
-				</footer>
+				</div>
 
 			</div>
 		</div>
