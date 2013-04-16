@@ -138,11 +138,13 @@ a:visited{
 	float: left;
 	width: 225px;
 	height: auto;
+	
 }
 #big-bar {
 	float: left;
 	width: 218px;
 	padding: 0 0 10px 5px;
+		
 	border-bottom:1px dotted #000;
 }
 
